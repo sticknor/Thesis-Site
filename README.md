@@ -12,4 +12,4 @@ Having some knowledge of web programming can be helpful for customizing site and
 ### 3. Publish
 
 #
-\*The photographs of my artwork and other creative content are NOT open source, but included as a helpful example.
+\*The photographs of my artwork and other creative content are NOT open source. They are linked from an external flickr accounn as a helpful example.
