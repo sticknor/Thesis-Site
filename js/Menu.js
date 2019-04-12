@@ -1,7 +1,7 @@
 // Menu View and Functionality
 function loadMenu() {
   $("#menu").empty();
-  
+
   for (category in site) {
 
     if (category === "home") { 
@@ -10,7 +10,7 @@ function loadMenu() {
         if (homeComponents[i]["label"] === "name") {
           var name = $("<a>");
           name.text(homeComponents[i]["display"]);
-          name.attr("href", "/");
+          name.attr("href", "#");
           name.addClass("name");
           $("#menu").append(name);
         }
