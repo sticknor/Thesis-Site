@@ -6,9 +6,10 @@ body{
 	color: #333;
 	font-family: 'Open Sans', sans-serif;
 	font-family: 'Lora', serif;
+	
 }
 
-#index{
+#body{
 	display: flex;
 	padding: 30px;
 }
@@ -43,14 +44,19 @@ body{
 	margin-left: 4%;
 }
 
-
 #name {
 	font-size: 18px;
 	border-bottom: 1px solid rgb(180, 180, 200);
 	padding-bottom: 20px;
 }
 
-.menuItem, .subMenuItem {
+#carouselControlsContainer {
+	display: flex;
+    flex: 1;
+    align-items: flex-end;
+}
+
+.menuOption, .subMenuOption {
 	text-align: center;
 	color: black;
 	display: block;
@@ -58,33 +64,29 @@ body{
 	cursor: pointer;
 	font-size: 18px;
 	margin: 10px;
-
 }
 
-.menuItem.subMenuItem {
+.menuOption.subMenuOption {
 	font-size: 16px;
 	padding-top: 10px;
 	margin: 0px;
 }
 
-
-.menuItem.collapsed > .subMenuItem {
+.menuOption.collapsed > .subMenuOption {
 	display: none;
 }
 
-
-.selected {
+.menuSelection{
 	color: rgb(180, 180, 200);
 }
 
-.selected::before {
+.menuSelection::before {
   content: '- ';
 }
 
-.selected::after {
+.menuSelection::after {
   content: ' -';
 }
-
 
 .pagecontent {
 	background-color: white;
@@ -242,6 +244,10 @@ table {
 
 a{
 	color: #666;
+}
+
+.hidden {
+	display: none;
 }
 
 #leftbar {

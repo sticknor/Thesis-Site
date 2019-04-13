@@ -4,30 +4,25 @@
     <title>Portfolio</title>
     <script src="jquery-1.9.0.js"></script>
 
-    <!-- Import javascript templates -->
+    <!-- Import javascript helpers -->
+    <script src="js/Utils.js"></script>
+
+    <!-- Import javascript components -->
+    <script src="js/Page.js"></script>
     <script src="templates/Home.js"></script>
     <script src="templates/Carousel.js"></script>
+    <script src="templates/Scroll.js"></script>
 
-    <!-- Import javascript helpers -->
-    <script src="js/ImportSheets.js"></script>
     <script src="js/Menu.js"></script>
-    <script src="js/Page.js"></script>
+    <script src="js/Site.js"></script>
 
     <script>  
 
       ////////////////////// CHANGE THIS TO YOUR SHEET ID ///////////////////////
 
-
-      importSheets("1rvivc9pnHCLM84f4JuXdvfaah-XlbHpvQ_ORprPTJLg");
-
+      var site = new Site(sheetID="1rvivc9pnHCLM84f4JuXdvfaah-XlbHpvQ_ORprPTJLg");
 
       /////////////////// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ////////////////////
-
-      var site = {};
-
-      window.onpopstate = function (event) {
-        loadPage(window.location.hash);
-      }
 
     </script>
     <link rel="icon" type="image/png" href="favicon/favicon.ico" />
@@ -35,10 +30,8 @@
     <link href="style/style.css" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body id="index">
-    <div id="menu">
-    </div>
-    <div id="page">
-    </div>
+  <body id="body">
+    <div id="menu"></div>
+    <div id="page"></div>
   </body>
 </html>

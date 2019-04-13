@@ -1,22 +1,27 @@
 function loadHome() {
+  updateMenu("home");
+  
+}
 
-  $("#page").empty();
-  clearMenu();
+class Home extends Page {
+  renderPage() {
+    console.log('render HOME')
 
-	var homeComponents = site["home"]["rows"];
-    for (var i = 0; i < homeComponents.length; i++) {
-    	console.log(homeComponents);
-    	console.log(homeComponents[i]["label"]);
-    	console.log(homeComponents[i]["display"]);
-    	switch (homeComponents[i]["label"]) {
-      	case "image":
+    var homeComponents = this.data["rows"][0];
+    for (var compontent in homeComponents) {
+      switch (compontent) {
+        case "image":
           var image = $("<img>");
-          image.attr("src", homeComponents[i]["display"]);
+          image.attr("src", homeComponents[compontent]);
           image.attr("id", "homeImage");
           $("#page").append(image);
           break;
+        case "text":
+          $("#page").append(homeComponents[compontent]);
+          break;
         case "splash":
           break;
-        }
+      }
     }
+  }
 }
