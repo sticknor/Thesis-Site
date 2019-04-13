@@ -22,8 +22,8 @@ class Site {
   addPage(pageData) {
     var page;
     switch (pageData.template) {
-      case pageTemplates.HOME:
-        page = new Home(pageData);
+      case pageTemplates.SPLASH:
+        page = new Splash(pageData);
         break;
       case pageTemplates.CAROUSEL:
         page = new Carousel(pageData);

@@ -1,9 +1,4 @@
-function loadHome() {
-  updateMenu("home");
-  
-}
-
-class Home extends Page {
+class Splash extends Page {
   renderPage() {
     console.log('render HOME')
 
