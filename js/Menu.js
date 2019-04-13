@@ -10,6 +10,7 @@ function loadMenu() {
         if (homeComponents[i]["label"] === "name") {
           var name = $("<a>");
           name.text(homeComponents[i]["display"]);
+          document.title = homeComponents[i]["display"];
           name.addClass("menuItem");
           name.attr("id", "name");
           name.on("click", function(event) {
