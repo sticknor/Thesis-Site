@@ -1,9 +1,6 @@
 function loadPage(page) {
   if (page === "") {
-    
-    console.log("HOME");
     loadHome();
-
   } else {
     page = page.substring(1);
     var hashComponents = page.split("-");

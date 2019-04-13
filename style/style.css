@@ -4,7 +4,39 @@ body{
 	line-height: 1.4;
 	background: #fff;
 	color: #333;
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Open Sans', sans-serif;
+	font-family: 'Lora', serif;
+}
+
+#index{
+	display: flex;
+	padding: 30px;
+}
+
+#menu { 
+	display: flex;
+    flex-direction: column;
+	/* width of menu */
+	flex: .2;
+	max-width: 300px;
+	margin-right: 30px;
+
+	justify-content: flex-start;
+	align-items: center;
+}
+
+#page {
+	flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+#homeImage {
+	object-fit: contain;
+	max-height: 100%;
+	max-width: 100%;
 }
 
 .grid {
@@ -12,39 +44,47 @@ body{
 }
 
 
-.menuItem {
+#name {
+	font-size: 18px;
+	border-bottom: 1px solid rgb(180, 180, 200);
+	padding-bottom: 20px;
+}
+
+.menuItem, .subMenuItem {
+	text-align: center;
 	color: black;
 	display: block;
+	text-decoration: none;
+	cursor: pointer;
+	font-size: 18px;
+	margin: 10px;
+
 }
 
-.subMenuItem {
-	color: black;
+.menuItem.subMenuItem {
+	font-size: 16px;
+	padding-top: 10px;
+	margin: 0px;
 }
+
+
+.menuItem.collapsed > .subMenuItem {
+	display: none;
+}
+
 
 .selected {
-	color: red;
+	color: rgb(180, 180, 200);
 }
 
-#homeImage{
-	width: 80%;
+.selected::before {
+  content: '- ';
 }
 
-.logo {
-	font-size: 30px;
-	text-decoration: none;
-	margin-bottom: 50px;
-	color: #243249;
-	font-weight: bold;
-	animation: example 5s infinite;
+.selected::after {
+  content: ' -';
 }
 
-/* Standard syntax */
-@keyframes example {
-  0%   {color: #4E7B96;}
-  25%  {color: #4E7B96;}
-  50%  {color: #4E7B96;}
-  100% {color: #4E7B96;}
-}
 
 .pagecontent {
 	background-color: white;

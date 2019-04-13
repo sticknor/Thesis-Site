@@ -1,4 +1,8 @@
 function loadHome() {
+
+  $("#page").empty();
+  clearMenu();
+
 	var homeComponents = site["home"]["rows"];
     for (var i = 0; i < homeComponents.length; i++) {
     	console.log(homeComponents);
