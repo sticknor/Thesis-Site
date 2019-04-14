@@ -18,7 +18,6 @@ class Carousel extends Page {
     for (var index in this.subOptions[getCurrentHash()].rows) {
       var imageData = this.subOptions[getCurrentHash()].rows[index];
 
-
       var thumbnailClick = function (event) { this.setIndex(event.data.index); }
 
       var thumbnail = $("<img>");
@@ -45,6 +44,8 @@ class Carousel extends Page {
     var image = $("<img>");
     image.attr("src", imageData["imageurl"]);
     image.attr("id", "fullImage");
+    image.css("cursor", "e-resize")
+    image.on("click", this.nextIndex.bind(this));
     $("#page").append(image);
 
 
