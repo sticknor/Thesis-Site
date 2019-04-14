@@ -11,9 +11,9 @@ class Page {
     this.data = data
   }
 
-  render() {
+  setupPage() {
     $("#page").empty();
     $("#page").unbind();
-    this.renderPage()
+    $("#carouselControlsContainer").empty();
   }
 }

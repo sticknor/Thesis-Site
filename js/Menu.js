@@ -42,6 +42,8 @@ class MenuOption {
     for (var subOption in subOptions) {
       this.subOptions.push(new MenuSubOption(subOptions[subOption]));
     }
+    this.subOptions.sort(function(a, b){ a.index - b.index });
+
   }
 
   toggle() {

@@ -35,7 +35,7 @@ class Site {
         console.log('Unexpected page template: ' + pageData.template)
     }
     this.pages[page.data.hash] = page;
-    this.menu.addOption(page.data.hash, page.data.title, page.data.index, page.data.subcategories);
+    this.menu.addOption(page.data.hash, page.data.title, page.data.index, page.data.subOptions);
     return page;
   }
 
@@ -57,19 +57,21 @@ class Site {
 
         if (title === "ARCHIVE") return;
 
-        var subcategories = [];
+        var subOptions = {};
         var rows = [];
-
-        data.feed.entry !== undefined && data.feed.entry.map((entry) => {
+        data.feed.entry !== undefined && data.feed.entry.map((entry, index) => {
           var rawData = entry.content.$t;
         
           var rowData = {};
 
           rawData.replace(/(.+?)(?:: )(.+?)(?:, |$)/g, function(match, key, value) {
             rowData[key] = value;
-            if (key === "group" && subcategories.value === undefined) { 
+            if (key === "group") { 
               var hash = title.split(" ").join("").toLowerCase()+"-"+value.split(" ").join("").toLowerCase();
-              subcategories.push({ "title" : value, hash});
+              if (!subOptions.hasOwnProperty(hash)) {
+                subOptions[hash] = {index, "title" : value, hash, rows: []};
+              }
+              subOptions[hash].rows.push(rowData);
             }
           });
 
@@ -80,14 +82,14 @@ class Site {
           site.setSiteDetails(rows[0])
         } else {
           var hash = sheetNum === 1? '': title.split(' ').join('').toLowerCase();
-          var page = site.addPage({ title, index: sheetNum, template, hash, subcategories, rows });
+          var page = site.addPage({ title, index: sheetNum, template, hash, subOptions, rows });
           if (hash === getCurrentPage()) {
             page.render()
           }
         }
       },
-      error: function(error) {
-        console.log('Error importing sheet: ' + error)
+      error: function() {
+        console.log('No more sheets found. Last sheet was ' + (sheetNum - 1))
       }
     });
   }

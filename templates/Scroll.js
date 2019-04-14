@@ -7,7 +7,8 @@ function loadScroll(page, pageTitle) {
 }
 
 class Scroll extends Page {
-  renderPage() {
+  render() {
+  	this.setupPage()
     console.log(this.data)
   }
 }

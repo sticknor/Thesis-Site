@@ -1,20 +1,87 @@
 
 class Carousel extends Page {
-  renderPage() {
-    console.log(this.data)
+  index = 0;
+  isThumbnailView = false;
+  subOptions;
+
+  constructor(data) {
+    super(data);
+
+    this.subOptions = Object.assign({}, this.data.subOptions);
+    this.subOptions[this.data.hash] = { "hash" : this.data.hash, rows: this.data.rows, title: this.data.title };
+
+  }
+
+  renderThumbnailView() {
+
+  }
+
+  renderCarouselView() {
+    $("#carouselControlsContainer").empty();
+
+    var carouselControlsContainer = $("<div>");
+    carouselControlsContainer.attr("id", "carouselControlsContainer");
+
+    var carouselIndexDisplay = $("<div>");
+    carouselIndexDisplay.attr("id", "carouselIndexDisplay");
+    carouselIndexDisplay.html(" | ")
+
+    console.log("("+(this.index+1)+" / "+this.subOptions[getCurrentHash()].rows.length+")");
+
+    var carouselControls = $("<div>");
+    carouselControls.attr("id", "carouselControls");
+
+    var carouselControlsPrev = $("<div>");
+    carouselControlsPrev.html("Previous");
+    carouselControlsPrev.on("click", this.prevIndex.bind(this));
+
+    var carouselControlsNext = $("<div>");
+    carouselControlsNext.html("Next");
+    carouselControlsNext.on("click", this.nextIndex.bind(this));
+
+    var carouselControlsShowThumbnails = $("<div>");
+    carouselControlsShowThumbnails.html("Show Thumbnails");
+    carouselControlsShowThumbnails.on("click", this.showThumbnails.bind(this));
+
+    carouselControls.append(carouselControlsPrev);
+    carouselControls.append(carouselIndexDisplay);
+    carouselControls.append(carouselControlsNext);
+
+    $("#carouselControlsContainer").append(carouselControls);
+    $("#carouselControlsContainer").append(carouselControlsShowThumbnails);
+  }
+
+  showThumbnails() {
+    this.isThumbnailView = true;
+    this.render()
+  }
+
+  prevIndex() {
+    if (this.index === 0) {
+      this.setIndex(this.subOptions[getCurrentHash()].rows.length - 1)
+    } else {
+      this.setIndex(this.index - 1);
+    }
+  }
+
+  nextIndex() {
+    this.setIndex((this.index + 1) % this.subOptions[getCurrentHash()].rows.length);
+  }
+
+  setIndex(index) {
+    this.index = index;
+    this.render()
+  }
+
+  render() {
+    this.setupPage()
+    if (this.isThumbnailView) {
+      this.renderThumbnailView();
+    } else {
+      this.renderCarouselView();
+    }
   }
 }
-
-
-var person = {
-  firstName: "John",
-  lastName : "Doe",
-  id       : 5566,
-  fullName : function() {
-    return this.firstName + " " + this.lastName;
-  }
-};
-
 
 function loadCarousel(page, pageTitle) {
   updateMenu(pageTitle);
@@ -31,38 +98,8 @@ function loadCarousel(page, pageTitle) {
   loadCarouselContent(page, pageTitle);
 }
 
-function loadCarouselContent(page, pageTitle) {
-  console.log(sessionStorage.getItem(pageTitle+"-index"));
-  console.log(sessionStorage.getItem(pageTitle+"-display"));
-}
-
 function loadCarouselControls() {
-  var carouselContentDescription = $("<div>");
-  carouselContentDescription.attr("id", "carouselContentDescription")
-
-  var carouselControls = $("<div>");
-  carouselControls.attr("id", carouselControls);
-
-  var carouselControlsPrev = $("<div>");
-  carouselControlsPrev.attr("id", carouselControlsPrev);
-  carouselControlsPrev.html("Previous");
-  carouselControlsPrev.on("click", { pageTitle }, function(event) { prev(event.data.pageTitle); });
-
-  var carouselControlsNext = $("<div>");
-  carouselControlsNext.attr("id", carouselControlsNext);
-  carouselControlsNext.html("Next");
-  carouselControlsNext.on("click", { pageTitle }, function(event) { next(event.data.pageTitle); });
-
-  var carouselControlsShowThumbnails = $("<div>");
-  carouselControlsShowThumbnails.attr("id", carouselControlsShowThumbnails);
-  carouselControlsShowThumbnails.html("Show Thumbnails");
-
-  carouselControls.append(carouselControlsPrev);
-  carouselControls.append(carouselControlsNext);
-  carouselControls.append(carouselControlsShowThumbnails);
-
-  $("#carouselControlsContainer").append(carouselContentDescription);
-  $("#carouselControlsContainer").append(carouselControls);
+  
 } 
 
 // CONTROLS

@@ -1,6 +1,6 @@
 class Splash extends Page {
-  renderPage() {
-    console.log('render HOME')
+  render() {
+    this.setupPage()
 
     var homeComponents = this.data["rows"][0];
     for (var compontent in homeComponents) {
