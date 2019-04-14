@@ -8,7 +8,7 @@ class Splash extends Page {
         case "image":
           var image = $("<img>");
           image.attr("src", homeComponents[compontent]);
-          image.attr("id", "homeImage");
+          image.attr("id", "fullImage");
           $("#page").append(image);
           break;
         case "text":

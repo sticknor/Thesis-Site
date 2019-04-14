@@ -17,6 +17,7 @@ class Site {
 
   setSiteDetails(details) {
     this.title = details.title;
+    document.title = this.title;
   }
 
   addPage(pageData) {

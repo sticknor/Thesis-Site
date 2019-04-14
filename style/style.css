@@ -12,6 +12,36 @@ body{
 	font-family: 'Lora', serif;
 }
 
+.imageDetailsContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    border-bottom: solid 1px rgb(150, 150, 150);
+    padding-bottom: 20px;
+}
+
+.thumbnail {
+	padding: 0px 10px 10px 10px;
+	max-width: 320px;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.imageDetails {
+    text-align: center;
+    color: rgb(150, 150, 150);
+}
+
+.imageTitle {
+    color: black;
+    margin-bottom: 5px;
+    text-align: center;
+    /* font-weight: bold; */
+}
+
 #body{
 	display: flex;
 	flex: 1;
@@ -36,13 +66,14 @@ body{
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
+    padding: 30px;
 }
 
-#homeImage {
+#fullImage {
 	object-fit: contain;
 	max-height: 100%;
 	max-width: 100%;
-	margin: 30px;
+	height: 100%;
 }
 
 .grid {
@@ -62,11 +93,18 @@ body{
     justify-content: flex-end;
     flex-direction: column;
     margin-bottom: 10px;
+	color: black;
+}
+
+#carouselIndexDisplay {
+	margin: 0px 10px;
+	opacity: 0.5;
 }
 
 #carouselControls {
 	display: flex;
 	flex-direction: row;
+	margin: 10px 0px;	
 }
 
 .menuOption, .subOption {
@@ -81,12 +119,14 @@ body{
 }
 
 .menuOption::before, .subOption::before {
-	content: "- ";
+	content: "\2022";
+	margin-right: 8px;
 	opacity: 0;
 }
 
 .menuOption::after, .subOption::after {
-	content: " -";
+	content: "\2022";
+	margin-left: 8px;
 	opacity: 0;
 }
 
