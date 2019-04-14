@@ -28,16 +28,9 @@ class Carousel extends Page {
 
      
       thumbnailGrid.append(thumbnail);
-
-      $('.thumbnailGrid').masonry({
-        // options
-        itemSelector: '.thumbnail',
-        columnWidth: 320
-      });
-
     }
-          $("#page").append(thumbnailGrid);
-
+      
+    $("#page").append(thumbnailGrid);
 
   }
 
