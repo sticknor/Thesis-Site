@@ -70,7 +70,7 @@ class Site {
             if (key === "group") { 
               var hash = title.split(" ").join("").toLowerCase()+"-"+value.split(" ").join("").toLowerCase();
               if (!subOptions.hasOwnProperty(hash)) {
-                subOptions[hash] = {index, "title" : value, hash, rows: []};
+                subOptions[hash] = {menuOrder: index, "title" : value, hash, rows: []};
               }
               subOptions[hash].rows.push(rowData);
             }

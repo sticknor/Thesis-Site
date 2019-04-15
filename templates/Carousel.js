@@ -1,36 +1,37 @@
 
 class Carousel extends Page {
-  index = 0;
-  isThumbnailView = false;
   subOptions;
 
   constructor(data) {
     super(data);
 
     this.subOptions = Object.assign({}, this.data.subOptions);
-    this.subOptions[this.data.hash] = { "hash" : this.data.hash, rows: this.data.rows, title: this.data.title };
+    this.subOptions[this.data.hash] = { "hash" : this.data.hash, rows: this.data.rows, title: this.data.title, index: 0, isThumbnailView: false };
+    for (var subOption in this.subOptions) {
+      this.subOptions[subOption].index = 0;
+    }
   }
 
   renderThumbnailView() {
     var thumbnailGrid = $("<div>");
     thumbnailGrid.addClass("thumbnailGrid");
 
-    for (var index in this.subOptions[getCurrentHash()].rows) {
-      var imageData = this.subOptions[getCurrentHash()].rows[index];
+    for (var i in this.subOptions[getCurrentHash()].rows) {
+      var imageData = this.subOptions[getCurrentHash()].rows[i];
 
-      var thumbnailClick = function (event) { this.setIndex(event.data.index); }
+      var thumbnailClick = function (event) { 
+        this.setIndex(event.data.i); 
+      }
 
       var thumbnail = $("<img>");
       thumbnail.attr("src", imageData.thumbnail || imageData.imageurl);
       thumbnail.addClass("thumbnail");
-      thumbnail.on("click", {index}, thumbnailClick.bind(this));
+      thumbnail.on("click", {i}, thumbnailClick.bind(this));
 
-     
       thumbnailGrid.append(thumbnail);
     }
       
     $("#page").append(thumbnailGrid);
-
   }
 
   renderCarouselView() {
@@ -39,15 +40,25 @@ class Carousel extends Page {
     var carouselControlsContainer = $("<div>");
     carouselControlsContainer.attr("id", "carouselControlsContainer");
 
-    var imageData = this.subOptions[getCurrentHash()].rows[this.index];
+    var imageData = this.subOptions[getCurrentHash()].rows[this.subOptions[getCurrentHash()].index];
 
     var image = $("<img>");
     image.attr("src", imageData["imageurl"]);
     image.attr("id", "fullImage");
-    image.css("cursor", "e-resize")
-    image.on("click", this.nextIndex.bind(this));
-    $("#page").append(image);
 
+    var prevArea = $("<div>");
+    prevArea.attr("id", "prevArea");
+    prevArea.css("cursor", "w-resize")
+    prevArea.on("click", this.prevIndex.bind(this));
+
+    var nextArea = $("<div>");
+    nextArea.attr("id", "nextArea");
+    nextArea.css("cursor", "e-resize")
+    nextArea.on("click", this.nextIndex.bind(this));
+
+    $("#page").append(image);
+   // $("#page").append(prevArea);
+   // $("#page").append(nextArea);
 
     var detailsString = "";
 
@@ -88,7 +99,7 @@ class Carousel extends Page {
 
     var carouselIndexDisplay = $("<div>");
     carouselIndexDisplay.attr("id", "carouselIndexDisplay");
-    carouselIndexDisplay.html((parseInt(this.index)+1)+" of "+parseInt(this.subOptions[getCurrentHash()].rows.length));
+    carouselIndexDisplay.html((parseInt(this.subOptions[getCurrentHash()].index)+1)+" of "+parseInt(this.subOptions[getCurrentHash()].rows.length));
 
 
     var carouselControls = $("<div>");
@@ -121,31 +132,31 @@ class Carousel extends Page {
   }
 
   showThumbnails() {
-    this.isThumbnailView = true;
+    this.subOptions[getCurrentHash()].isThumbnailView = true;
     this.render()
   }
 
   prevIndex() {
-    if (this.index === 0) {
+    if (this.subOptions[getCurrentHash()].index === 0) {
       this.setIndex(this.subOptions[getCurrentHash()].rows.length - 1)
     } else {
-      this.setIndex(this.index - 1);
+      this.setIndex(this.subOptions[getCurrentHash()].index - 1);
     }
   }
 
   nextIndex() {
-    this.setIndex((this.index + 1) % this.subOptions[getCurrentHash()].rows.length);
+    this.setIndex((this.subOptions[getCurrentHash()].index + 1) % this.subOptions[getCurrentHash()].rows.length);
   }
 
   setIndex(index) {
-    this.index = index;
-    this.isThumbnailView = false;
+    this.subOptions[getCurrentHash()].index = parseInt(index);
+    this.subOptions[getCurrentHash()].isThumbnailView = false;
     this.render()
   }
 
   render() {
-    this.setupPage()
-    if (this.isThumbnailView) {
+    this.setupPage();
+    if (this.subOptions[getCurrentHash()].isThumbnailView) {
       this.renderThumbnailView();
     } else {
       this.renderCarouselView();
