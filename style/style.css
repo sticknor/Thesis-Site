@@ -31,6 +31,8 @@ body{
 	cursor: pointer;
 }
 
+
+
 .imageDetails {
     text-align: center;
     color: rgb(150, 150, 150);
@@ -97,6 +99,11 @@ body{
 	color: black;
 }
 
+#carouselControlNext, #carouselControlPrev {
+	font-size: 24px;
+	font-height: 16px;
+}
+
 #carouselIndexDisplay {
 	margin: 0px 10px;
 	opacity: 0.5;
@@ -106,6 +113,7 @@ body{
 	display: flex;
 	flex-direction: row;
 	margin: 10px 0px;	
+	align-items: center;
 }
 
 .menuOption, .subOption {

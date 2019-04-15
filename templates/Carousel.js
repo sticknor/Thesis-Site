@@ -46,19 +46,7 @@ class Carousel extends Page {
     image.attr("src", imageData["imageurl"]);
     image.attr("id", "fullImage");
 
-    var prevArea = $("<div>");
-    prevArea.attr("id", "prevArea");
-    prevArea.css("cursor", "w-resize")
-    prevArea.on("click", this.prevIndex.bind(this));
-
-    var nextArea = $("<div>");
-    nextArea.attr("id", "nextArea");
-    nextArea.css("cursor", "e-resize")
-    nextArea.on("click", this.nextIndex.bind(this));
-
     $("#page").append(image);
-   // $("#page").append(prevArea);
-   // $("#page").append(nextArea);
 
     var detailsString = "";
 
@@ -108,11 +96,13 @@ class Carousel extends Page {
     var carouselControlsPrev = $("<div>");
     carouselControlsPrev.html("&#171;");
     carouselControlsPrev.addClass("clickable");
+    carouselControlsPrev.attr("id", "carouselControlPrev")
     carouselControlsPrev.on("click", this.prevIndex.bind(this));
 
     var carouselControlsNext = $("<div>");
     carouselControlsNext.html("&#187;");
     carouselControlsNext.addClass("clickable");
+    carouselControlsNext.attr("id", "carouselControlNext")
     carouselControlsNext.on("click", this.nextIndex.bind(this));
 
     var carouselControlsShowThumbnails = $("<div>");
