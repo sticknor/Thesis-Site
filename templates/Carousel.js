@@ -35,7 +35,7 @@ class Carousel extends Page {
   }
 
   renderCarouselView() {
-    $("#carouselControlsContainer").empty();
+    $("#carouselControlsContainer").remove();
 
     var carouselControlsContainer = $("<div>");
     carouselControlsContainer.attr("id", "carouselControlsContainer");
@@ -45,10 +45,7 @@ class Carousel extends Page {
     var image = $("<img>");
     image.attr("src", imageData["imageurl"]);
     image.attr("id", "fullImage");
-
     $("#page").append(image);
-
-    var detailsString = "";
 
     var imageDetails = $("<div>");
     imageDetails.addClass("imageDetailsContainer");
@@ -60,65 +57,43 @@ class Carousel extends Page {
       imageDetails.append(title);
     }
 
-    if (imageData["medium"] !== undefined) {
-      detailsString+=imageData["medium"]+" &#8226; "
-    }
-
-    if (imageData["dimensions"] !== undefined) {
-      detailsString+=imageData["dimensions"]+" &#8226; "
-    }
-
-    if (imageData["year"] !== undefined) {
-      detailsString+=imageData["year"]+" &#8226; "
-    }
-
+    var detailsString = makeDetailsString(imageData);
     if (detailsString !== "") {
       var details = $("<div>");
-      details.html(detailsString.substring(0, detailsString.length-9));
+      details.html(detailsString);
       details.addClass("imageDetails");
       imageDetails.append(details);
-    }
-
-    if (imageData["description"] !== undefined) {
-      var description = $("<div>");
-      description.html(imageData["description"]);
-      description.addClass("imageDescription");
     }
 
     var carouselIndexDisplay = $("<div>");
     carouselIndexDisplay.attr("id", "carouselIndexDisplay");
     carouselIndexDisplay.html((parseInt(this.subOptions[getCurrentHash()].index)+1)+" of "+parseInt(this.subOptions[getCurrentHash()].rows.length));
-
-
     var carouselControls = $("<div>");
     carouselControls.attr("id", "carouselControls");
-
     var carouselControlsPrev = $("<div>");
     carouselControlsPrev.html("&#171;");
     carouselControlsPrev.addClass("clickable");
     carouselControlsPrev.attr("id", "carouselControlPrev")
     carouselControlsPrev.on("click", this.prevIndex.bind(this));
-
     var carouselControlsNext = $("<div>");
     carouselControlsNext.html("&#187;");
     carouselControlsNext.addClass("clickable");
     carouselControlsNext.attr("id", "carouselControlNext")
     carouselControlsNext.on("click", this.nextIndex.bind(this));
-
     var carouselControlsShowThumbnails = $("<div>");
     carouselControlsShowThumbnails.html("Show Thumbnails");
+    carouselControlsShowThumbnails.attr("id", "carouselControlShowThumbnails")
     carouselControlsShowThumbnails.addClass("clickable");
     carouselControlsShowThumbnails.on("click", this.showThumbnails.bind(this));
-
     carouselControls.append(carouselControlsPrev);
     carouselControls.append(carouselIndexDisplay);
     carouselControls.append(carouselControlsNext);
+    
+    carouselControlsContainer.append(imageDetails);
+    carouselControlsContainer.append(carouselControls);
+    carouselControlsContainer.append(carouselControlsShowThumbnails);
 
-    $("#carouselControlsContainer").append(imageDetails);
-    $("#carouselControlsContainer").append(carouselControls);
-    $("#carouselControlsContainer").append(carouselControlsShowThumbnails);
-
-
+    $("#menuContainer").append(carouselControlsContainer);
   }
 
   showThumbnails() {

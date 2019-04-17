@@ -1,7 +1,8 @@
 const pageTemplates = {
   SPLASH: 'Splash',
   CAROUSEL: 'Carousel',
-  SCROLL: 'Scroll'
+  SCROLL: 'Scroll',
+  GRID: 'Grid',
 }
 
 class Page {
@@ -12,8 +13,11 @@ class Page {
   }
 
   setupPage() {
+    // Clear the page
     $("#page").empty();
     $("#page").unbind();
-    $("#carouselControlsContainer").empty();
+    // Remove various other divs added by the page templates
+    $("#carouselControlsContainer").remove();
+    $("#splashDetailsContainer").remove();
   }
 }

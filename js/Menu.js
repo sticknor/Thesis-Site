@@ -59,10 +59,13 @@ class MenuOption {
     }
   }
 
-  render() {
+  render(index) {
     var menuOption = $("<div>");
     menuOption.html(this.title);
     menuOption.addClass("menuOption");
+    if (parseInt(index) === 1) {
+      menuOption.addClass("homeMenuOption");
+    }
     menuOption.attr("data-hash", this.hash);
     menuOption.on("click", this.onClick.bind(this));
     if (getCurrentHash() === this.hash) {
@@ -96,62 +99,7 @@ class Menu {
     $("#menu").on("click", this.onClick.bind(this));
 
     for (var index in this.options) {
-      this.options[index].render()
+      this.options[index].render(index)
     }
   }
 }
-
-// // Menu View and Functionality
-// function loadMenu() {
-//   $("#menu").empty();
-
-//   for (category in siteData) {
-
-//     if (category === "home") { 
-//       var homeComponents = siteData[category]["rows"];
-//       for (var i = 0; i < homeComponents.length; i++) {
-//         if (homeComponents[i]["label"] === "name") {
-//           var name = $("<a>");
-//           name.text(homeComponents[i]["display"]);
-//           document.title = homeComponents[i]["display"];
-//           name.addClass("menuItem");
-//           name.attr("id", "name");
-//           name.on("click", function(event) {
-//             event.stopPropagation();
-//             window.location.hash = "#"; 
-//           });
-//           $("#menu").append(name);
-//         }
-//       }
-//     } else {
-//       var hash = siteData[category]["hash"];
-//       var menuItem = $("<a>");
-//       menuItem.html(siteData[category]["label"]);
-//       menuItem.addClass("menuItem");
-//       menuItem.addClass("collapsed");
-//       menuItem.attr("id", "menu_"+hash);
-//       menuItem.on("click", { hash, category, menuItem }, function(event) {
-//         event.stopPropagation();
-//         var { category, hash, menuItem } = event.data;
-//         // If the menu item has sub menu options, toggle their visibility 
-//         var submenu = Object.keys(siteData[category]["subcategories"]);
-//         if (submenu.length > 0) { menuItem.toggleClass("collapsed"); } 
-//         // Otherwise, nav to the page
-//         else { window.location.hash = event.data.hash; } 
-//       });
-      
-//       $("#menu").append(menuItem);
-//     }
-//   }
-
-//   var carouselControlsContainer = $("<div>");
-//   carouselControlsContainer.attr("id", "carouselControlsContainer");
-//   $("#menu").append(carouselControlsContainer);
-// }
-
-
-// function updateMenu(page) {
-//   $("#carouselControlsContainer").empty();
-//   $(".menuItem").each(function() { $(this).removeClass("selected"); });
-//   $("#menu_"+page).addClass("selected");
-// }

@@ -32,6 +32,9 @@ class Site {
       case pageTemplates.SCROLL:
         page = new Scroll(pageData);
         break;
+      case pageTemplates.GRID:
+        page = new Grid(pageData);
+        break;
       default:
         console.log('Unexpected page template: ' + pageData.template)
     }
