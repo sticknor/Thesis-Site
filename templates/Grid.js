@@ -6,9 +6,6 @@ class Grid extends Page {
     grid.attr("id", "grid");
     $("#page").append(grid);
 
-     
-
-
     for (var i in this.data.rows) {
       var work = this.data.rows[i];
       var gridItem = $("<div>");
@@ -31,8 +28,7 @@ class Grid extends Page {
         title.addClass("imageTitle");
         imageDetails.append(title);
       }
-      var detailsString = makeDetailsString(work);
-      console.log(detailsString);
+      var detailsString = makeDetailsLine([work["medium"], work["dimensions"], work["year"]]);
       if (detailsString !== "") {
         var details = $("<div>");
         details.html(detailsString);
@@ -43,7 +39,7 @@ class Grid extends Page {
 
       $("#grid").append(gridItem);
     }
-    
+
     let magicGrid = new MagicGrid({
       container: "#grid", // Required. Can be a class, id, or an HTMLElement.
       static: true, // Required for static content.

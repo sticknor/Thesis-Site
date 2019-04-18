@@ -2,16 +2,58 @@ html {
 	height: 100%;
 }
 
+i {
+	font-style: italic;
+}
+
+b {
+	font-weight: bold;
+}
+
 body{
 	text-align: left;
 	font-size: 16px;
-	line-height: 1.4;
+	line-height: 1.6;
 	background: #fff;
 	color: #333;
 	font-family: 'Open Sans', sans-serif;
 	font-family: 'Lora', serif;
 }
 
+.aboutContainer {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 30px;
+    color: black;
+}
+
+
+.aboutParagraph {
+	margin-bottom: 15px;
+}
+
+.aboutContainerHeading {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    font-size: 18px;
+    border-bottom: 1px solid rgb(180, 180, 200);
+}
+
+.aboutmultilineB {
+    margin-bottom: 15px;
+}
+
+.aboutmultilineA {
+    margin-bottom: 15px;
+}
+
+.sortedContainerHeading {
+	font-weight: bold;
+}
+
+.sortedContainer {
+	margin-bottom: 15px;
+}
 
 #fullImage {
 	object-fit: contain;
@@ -74,7 +116,7 @@ body{
 #page {
 	flex: 1;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     flex-direction: column;
     padding: 30px 30px 30px 0px;
@@ -114,6 +156,7 @@ body{
 
 #menu {
 	flex: 1;
+	width: 100%;
 }
 
 
@@ -130,7 +173,8 @@ body{
 	text-decoration: none;
 	cursor: pointer;
 	font-size: 18px;
-	margin: 10px;
+	margin: 10px 0px;
+	width: 100%;
 }
 
 .homeMenuOption {

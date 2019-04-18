@@ -23,17 +23,20 @@ class Site {
   addPage(pageData) {
     var page;
     switch (pageData.template) {
-      case pageTemplates.SPLASH:
+      case "Splash":
         page = new Splash(pageData);
         break;
-      case pageTemplates.CAROUSEL:
+      case "Carousel":
         page = new Carousel(pageData);
         break;
-      case pageTemplates.SCROLL:
+      case "Scroll":
         page = new Scroll(pageData);
         break;
-      case pageTemplates.GRID:
+      case "Grid":
         page = new Grid(pageData);
+        break;
+      case "About":
+        page = new About(pageData);
         break;
       default:
         console.log('Unexpected page template: ' + pageData.template)

@@ -1,10 +1,3 @@
-const pageTemplates = {
-  SPLASH: 'Splash',
-  CAROUSEL: 'Carousel',
-  SCROLL: 'Scroll',
-  GRID: 'Grid',
-}
-
 class Page {
   data;
 
