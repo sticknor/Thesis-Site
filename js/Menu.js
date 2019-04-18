@@ -16,7 +16,7 @@ class MenuSubOption {
   render() {
     var subOption = $("<div>");
     subOption.html(this.title);
-    subOption.addClass("menuOption subOption");
+    subOption.addClass("menuOption subOption clickable");
     subOption.attr("data-hash", this.hash);
     subOption.on("click", this.onClick.bind(this));
     if (getCurrentHash() === this.hash) {
@@ -62,7 +62,7 @@ class MenuOption {
   render(index) {
     var menuOption = $("<div>");
     menuOption.html(this.title);
-    menuOption.addClass("menuOption");
+    menuOption.addClass("menuOption clickable");
     if (parseInt(index) === 1) {
       menuOption.addClass("homeMenuOption");
     }

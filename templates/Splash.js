@@ -19,7 +19,7 @@ class Splash extends Page {
       imageDetails.append(title);
     }
 
-    var detailsString = makeDetailsString(imageData);
+    var detailsString = makeDetailsLine([imageData["medium"], imageData["dimensions"], imageData["year"]]);
     if (detailsString !== "") {
       var details = $("<div>");
       details.html(detailsString);

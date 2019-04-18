@@ -79,6 +79,7 @@ body{
 
 .clickable {
 	cursor: pointer;
+	user-select: none;
 }
 
 .imageDetails, .splashSubText {
@@ -171,7 +172,6 @@ body{
 	color: black;
 	display: block;
 	text-decoration: none;
-	cursor: pointer;
 	font-size: 18px;
 	margin: 10px 0px;
 	width: 100%;
@@ -203,6 +203,7 @@ body{
 #carouselIndexDisplay {
 	margin: 0px 10px;
 	opacity: 0.5;
+	user-select: none;
 }
 
 #carouselControls {
@@ -211,9 +212,6 @@ body{
 	margin: 10px 0px;	
 	align-items: center;
 }
-
-
-
 
 
 .menuOption::before, .subOption::before {
@@ -228,6 +226,7 @@ body{
 	margin-left: 8px;
 	opacity: 0;
 	color: rgb(150, 150, 150);
+
 }
 
 .menuOption.subOption {
@@ -235,6 +234,7 @@ body{
 	padding-bottom: 10px;
 	margin: 0px;
 	color: rgb(150, 150, 150);
+
 }
 
 .menuOption.collapsed > .subOption {

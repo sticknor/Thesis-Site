@@ -39,7 +39,7 @@ class Carousel extends Page {
 
     var carouselControlsContainer = $("<div>");
     carouselControlsContainer.attr("id", "carouselControlsContainer");
-
+    
     var imageData = this.subOptions[getCurrentHash()].rows[this.subOptions[getCurrentHash()].index];
 
     var image = $("<img>");
