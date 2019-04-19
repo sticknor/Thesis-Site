@@ -310,3 +310,42 @@ body{
     height: 100%;
 }
 
+@media screen and (max-width: 850px) {
+  body {
+    flex-direction: column;
+  }
+
+  #menuContainer {
+  	display: block;
+  	width: 90%;
+  	padding: 5%;
+  }
+
+  #page {
+  	overflow: initial;
+  	padding: 5%;
+  	padding-top: 0px;
+  }
+
+  .gridItem {
+	width: 90%;
+	height: auto;
+	text-align: left;
+	margin-bottom: 30px;
+   }
+
+   .menuOption, .subOption {
+   	margin: 5px 0px;
+   	padding-bottom: 0px;
+   }
+
+   .menuOption.subOption {
+   	padding-bottom: 0px;
+   }
+
+   .homeMenuOption {
+   	margin: 5px;
+   	padding-bottom: 5px;
+   }
+}
+

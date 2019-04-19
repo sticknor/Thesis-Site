@@ -1,4 +1,5 @@
 class Splash extends Page {
+
   render() {
     this.setupPage()
 
@@ -28,6 +29,11 @@ class Splash extends Page {
     }
 
     $("#page").append(image);
-    $("#menuContainer").append(imageDetails);
+
+    if (window.innerWidth > 850) {
+      $("#menuContainer").append(imageDetails);
+    } else {
+      $("#page").append(imageDetails);
+    }
   }
 }

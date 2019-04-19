@@ -118,7 +118,9 @@ class About extends Page {
         container.addClass("aboutContainer")
   			var containerHeading = $("<div>");
   			containerHeading.html(rowData.heading);
-        containerHeading.addClass("aboutContainerHeading");
+        if (rowData.heading) {
+          containerHeading.addClass("aboutContainerHeading");
+        }
   			container.append(containerHeading);
   			$("#page").append(container);
   		} 

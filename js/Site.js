@@ -8,6 +8,7 @@ class Site {
     this.menu = new Menu();
     this.importSheets();
     window.onpopstate = this.render.bind(this)
+    $(window).resize(this.render.bind(this));
   }
 
   render() {
