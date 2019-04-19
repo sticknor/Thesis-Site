@@ -5,10 +5,6 @@ class Carousel extends Page {
   constructor(data) {
     super(data);
 
-    $(window).resize(function() {
-      this.render();
-    });
-
     this.subOptions = Object.assign({}, this.data.subOptions);
     this.subOptions[this.data.hash] = { "hash" : this.data.hash, rows: this.data.rows, title: this.data.title, index: 0, isThumbnailView: false };
     for (var subOption in this.subOptions) {
@@ -17,15 +13,15 @@ class Carousel extends Page {
   }
 
 
-  renderGrid() {
+  renderGridView() {
     this.setupPage()
 
     var grid = $("<div>");
     grid.attr("id", "grid");
     $("#page").append(grid);
 
-    for (var i in this.data.rows) {
-      var work = this.data.rows[i];
+    for (var i in this.subOptions[getCurrentHash()].rows) {
+      var work = this.subOptions[getCurrentHash()].rows[i];
       var gridItem = $("<div>");
       gridItem.addClass("gridItem");
 
@@ -178,7 +174,9 @@ class Carousel extends Page {
 
   render() {
     this.setupPage();
-    if (this.subOptions[getCurrentHash()].isThumbnailView) {
+    if (window.innerWidth <= 850) {
+      this.renderGridView();
+    } else if (this.subOptions[getCurrentHash()].isThumbnailView) {
       this.renderThumbnailView();
     } else {
       this.renderCarouselView();
