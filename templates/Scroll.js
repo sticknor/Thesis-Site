@@ -73,9 +73,12 @@ class Scroll extends Page {
   		image.attr("src", rowData.imageurl);
   		block.append(image);
   	} else if (rowData.videourl) {
+  		var videoWrapper = $("<div>");
+  		videoWrapper.addClass("scrollBlockVideo");
   		var video = $("<iframe frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen>");
   		video.attr("src", rowData.videourl);
-  		block.append(video);
+  		videoWrapper.append(video);
+  		block.append(videoWrapper);
   	}
 
   	if (rowData.caption) {

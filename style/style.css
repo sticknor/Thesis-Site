@@ -265,32 +265,48 @@ body{
 
 .scrollIntroHeading {
     font-size: 18px;
-    padding: 10px 0px;
+    padding-bottom: 20px;
+    padding-top: 10px;
     border-bottom: 1px solid rgb(180, 180, 200);;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .scrollBlockImage {
     width: 100%;
 }
 
-
 .sortedContainerHeading {
-    margin-bottom:  10px;
 }
 
 .scrollintro {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .scrollBlock {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
+
 
 .sortedContainer {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+}
+
+.scrollBlockVideo {
+    position: relative;
+    padding-bottom: 53.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+    margin-bottom: 5px;
+}
+
+.scrollBlockVideo iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
