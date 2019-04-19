@@ -13,7 +13,7 @@ class Carousel extends Page {
   }
 
 
-  renderGridView() {
+  renderMobileView() {
     this.setupPage()
 
     var grid = $("<div>");
@@ -175,7 +175,7 @@ class Carousel extends Page {
   render() {
     this.setupPage();
     if (window.innerWidth <= 850) {
-      this.renderGridView();
+      this.renderMobileView();
     } else if (this.subOptions[getCurrentHash()].isThumbnailView) {
       this.renderThumbnailView();
     } else {
