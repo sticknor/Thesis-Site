@@ -23,7 +23,7 @@ class MenuSubOption {
 }
 
 class MenuOption {
-  
+
   constructor(pageHash, pageTitle, subOptions) {
     this.subOptions = [];
     this.expanded = false;
@@ -76,7 +76,10 @@ class MenuOption {
 }
 
 class Menu {
-  options = {};
+
+  constructor() {
+    this.options = {};
+  }
 
   addOption(pageHash, pageTitle, index, subOptions) {
     this.options[index] = new MenuOption(pageHash, pageTitle, subOptions);

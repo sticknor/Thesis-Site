@@ -30,7 +30,6 @@ class Scroll extends Page {
 
   	if (rowData.heading || rowData.subheading) {
   			var heading = $("<div>");
-  			console.log(makeDetailsLine(["<b>"+rowData.heading+"</b>", rowData.subheading]))
   			heading.html(makeDetailsLine(["<b>"+rowData.heading+"</b>", rowData.subheading]));
   			heading.addClass("scrollIntroHeading")
   	    intro.append(heading);
@@ -53,7 +52,6 @@ class Scroll extends Page {
 
   	if (rowData.heading || rowData.subheading) {
   			var heading = $("<div>");
-  			console.log(makeDetailsLine(["<b>"+rowData.heading+"</b>", rowData.subheading]))
   			heading.html(makeDetailsLine(["<b>"+rowData.heading+"</b>", rowData.subheading]));
   			heading.addClass("scrollBlockHeading")
   	    block.append(heading);
@@ -144,7 +142,7 @@ class Scroll extends Page {
   		}
   	}
 
-    
+
     $("#page").scrollTop(0);
   }
 }
