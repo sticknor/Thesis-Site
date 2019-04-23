@@ -23,12 +23,10 @@ class MenuSubOption {
 }
 
 class MenuOption {
-  title;
-  hash;
-  subOptions = [];
-  expanded = false;
-
+  
   constructor(pageHash, pageTitle, subOptions) {
+    this.subOptions = [];
+    this.expanded = false;
     this.title = pageTitle;
     this.hash = pageHash;
     if (getCurrentPage() === this.hash) {
@@ -86,7 +84,7 @@ class Menu {
   }
 
   onClick(event) {
-    this.render()
+    this.render();
   }
 
   render() {
