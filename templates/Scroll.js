@@ -1,5 +1,5 @@
 class Scroll extends Page {
-  
+
   constructor(data) {
     super(data);
 
@@ -125,7 +125,7 @@ class Scroll extends Page {
   }
 
   render() {
-  	this.setupPage()
+  	this.setupPage();
 
   	var rows = this.subOptions[getCurrentHash()].rows;
   	for (var row in rows) {
@@ -144,5 +144,7 @@ class Scroll extends Page {
   		}
   	}
 
+    
+    $("#page").scrollTop(0);
   }
 }

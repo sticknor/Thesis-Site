@@ -1,6 +1,7 @@
 class Site {
   
   constructor(sheetID) {
+    this.pages = {};
     this.sheetID = sheetID;
     this.menu = new Menu();
     this.importSheets();
