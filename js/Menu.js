@@ -1,10 +1,8 @@
 class MenuSubOption {
-  
+
   constructor(data) {
-    this.title = data.title
-    this.hash = data.hash
-    this.show = false;
-    this.selected = false;
+    this.title = data.title;
+    this.hash = data.hash;
   }
 
   onClick() {
