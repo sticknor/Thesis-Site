@@ -1,6 +1,5 @@
 class Page {
-  data;
-
+  
   constructor(data) {
     this.data = data
   }

@@ -1,8 +1,5 @@
 class Site {
-  pages = {};
-  menu;
-  title;
-
+  
   constructor(sheetID) {
     this.sheetID = sheetID;
     this.menu = new Menu();

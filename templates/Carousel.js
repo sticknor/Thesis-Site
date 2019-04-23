@@ -1,7 +1,6 @@
 
 class Carousel extends Page {
-  subOptions;
-
+  
   constructor(data) {
     super(data);
 

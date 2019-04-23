@@ -1,7 +1,4 @@
 class About extends Page {
-  sections = {};
-
-
   renderParagraph(rowData) {
     var paragraph = $("<div>");
     paragraph.addClass("aboutParagraph");

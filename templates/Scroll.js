@@ -1,6 +1,5 @@
 class Scroll extends Page {
-  subOptions;
-
+  
   constructor(data) {
     super(data);
 
