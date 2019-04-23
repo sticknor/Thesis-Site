@@ -27,11 +27,6 @@ class Carousel extends Page {
       var image = $("<img>");
       image.attr("src", work["imageurl"]);
       image.attr("id", "gridImage");
-      //image.attr("id", "gridImage");
-      image.load(function() {
-        console.log("Image loaded")
-        magicGrid.positionItems();
-      });
       gridItem.append(image);
       
       var imageDetails = $("<div>");
@@ -52,16 +47,6 @@ class Carousel extends Page {
 
       $("#grid").append(gridItem);
     }
-
-    /*let magicGrid = new MagicGrid({
-      container: "#grid", // Required. Can be a class, id, or an HTMLElement.
-      static: true, // Required for static content.
-      animate: false, // Optional.
-      gutter: 30,
-    });
-    // magicGrid.listen();
-    magicGrid.positionItems();
-*/
   }
 
   renderThumbnailView() {
