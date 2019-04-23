@@ -59,7 +59,7 @@ class Carousel extends Page {
       animate: false, // Optional.
       gutter: 30,
     });
-    magicGrid.listen();
+    // magicGrid.listen();
     magicGrid.positionItems();
 
   }
