@@ -53,7 +53,7 @@ class Carousel extends Page {
       $("#grid").append(gridItem);
     }
 
-    let magicGrid = new MagicGrid({
+    /*let magicGrid = new MagicGrid({
       container: "#grid", // Required. Can be a class, id, or an HTMLElement.
       static: true, // Required for static content.
       animate: false, // Optional.
@@ -61,7 +61,7 @@ class Carousel extends Page {
     });
     // magicGrid.listen();
     magicGrid.positionItems();
-
+*/
   }
 
   renderThumbnailView() {
