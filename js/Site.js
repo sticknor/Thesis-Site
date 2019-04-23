@@ -1,9 +1,6 @@
 class Site {
 
   constructor(sheetID) {
-    this.height = $(window).height();
-    this.width = $(window).width();
-
     this.pages = {};
     this.sheetID = sheetID;
     this.menu = new Menu();
@@ -13,18 +10,16 @@ class Site {
   }
 
   windowResized() {
-    console.log("windowResized");
     // only re render if width of window was changed
     if (this.width !== $(window).width()) {
       this.render();
-      console.log("Rendering!")
     }
   }
 
   render() {
+    this.width = $(window).width();
     this.menu.render();
     this.pages[getCurrentPage()].render()
-    console.log("Rendering2!")
   }
 
   setSiteDetails(details) {
