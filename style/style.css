@@ -329,6 +329,10 @@ body{
     display: block;
   }
 
+  #fullImage {
+  	height: initial;
+  }
+
   .gridItem {
 	width: 90%;
 	height: auto;
