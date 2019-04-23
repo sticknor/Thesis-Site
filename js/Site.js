@@ -13,15 +13,18 @@ class Site {
   }
 
   windowResized() {
+    console.log("windowResized");
     // only re render if width of window was changed
     if (this.width !== $(window).width()) {
       this.render();
+      console.log("Rendering!")
     }
   }
 
   render() {
     this.menu.render();
     this.pages[getCurrentPage()].render()
+    console.log("Rendering2!")
   }
 
   setSiteDetails(details) {
