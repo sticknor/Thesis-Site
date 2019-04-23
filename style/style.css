@@ -322,9 +322,11 @@ body{
   }
 
   #page {
-  	overflow: initial;
-  	padding: 5%;
-  	padding-top: 0px;
+  	overflow: scroll;
+    padding: 5%;
+    padding-top: 0px;
+    height: 100%;
+    display: block;
   }
 
   .gridItem {
