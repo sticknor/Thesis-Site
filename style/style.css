@@ -322,7 +322,7 @@ body{
   }
 
   #page {
-  	overflow: scroll;
+  	overflow: initial;
     padding: 5%;
     padding-top: 0px;
     height: 100%;
