@@ -1,12 +1,22 @@
 class Site {
-  
+
   constructor(sheetID) {
+    this.height = $(window).height();
+    this.width = $(window).width();
+
     this.pages = {};
     this.sheetID = sheetID;
     this.menu = new Menu();
     this.importSheets();
     window.onpopstate = this.render.bind(this)
-    $(window).resize(this.render.bind(this));
+    $(window).resize(this.windowResized.bind(this));
+  }
+
+  windowResized() {
+    // only re render if width of window was changed
+    if (this.width !== $(window).width()) {
+      this.render();
+    }
   }
 
   render() {
