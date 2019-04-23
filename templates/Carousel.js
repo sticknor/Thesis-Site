@@ -25,12 +25,12 @@ class Carousel extends Page {
       gridItem.addClass("gridItem");
 
       var image = $("<img>");
-      image.attr("src", work["thumbnail"] || work["imageurl"]);
+      image.attr("src", work["imageurl"]);
       image.attr("id", "gridImage");
       //image.attr("id", "gridImage");
       image.load(function() {
         console.log("Image loaded")
-        // magicGrid.positionItems();
+        magicGrid.positionItems();
       });
       gridItem.append(image);
       
