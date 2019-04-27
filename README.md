@@ -10,7 +10,7 @@
  * [https://samt.work](https://samt.work) ([source](https://docs.google.com/spreadsheets/d/1rvivc9pnHCLM84f4JuXdvfaah-XlbHpvQ_ORprPTJLg/edit?usp=sharing))
  * [Portfolio Site example]() ([source]())
  
-*If you use this project to build your site, please [let me know](srticknor@gmail.com) and I will add it here.*
+*If you use this project to build your site, please [let me know](srticknor@gmail.com) so I can add it here!*
 
 ## Requirements
 Having some knowledge of web programming can be helpful for customizing your site and troubleshooting.
