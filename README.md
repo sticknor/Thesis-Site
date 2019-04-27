@@ -1,5 +1,6 @@
-# Portfolio Site
-A easy-to-edit portfolio site for artists, designers, and technologists.<br>
+<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="100" src="https://vuejs.org/images/logo.png" alt="Vue logo"></a></p>
+<h2 align="center">A free, fast, and easy-to-edit portfolio website for artists and designers.</h2>
+
 
 This website loads everything from a Google Sheets, making it incredibly easy to update your portofolio, and make changes. 
 
@@ -16,6 +17,7 @@ All that's required is ..
 
 1. [A GitHub account](https://github.com/)
 2. [A Google account](https://accounts.google.com/)
+3. Your images hosted on the web (Flickr, Imgur, etc...)
 
 These intructions will help you set up a Google Spreadsheet and GitHub Pages site, a totally free set-up. 
 
