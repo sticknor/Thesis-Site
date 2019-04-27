@@ -8,22 +8,11 @@
 
 To see the site in action, visit [samt.work](https://samt.work). Also, visit the [Google Sheet](https://docs.google.com/spreadsheets/d/1rvivc9pnHCLM84f4JuXdvfaah-XlbHpvQ_ORprPTJLg/edit?usp=sharing).
 
-
-This website loads everything from a Google Sheets, making it incredibly easy to update your portofolio, and make changes. 
-
-Here's an expmle:
-- my site
-- my sheet
-
-The code for this site is open source -- totally free to use and edit without attribution* <br>
-
-
 Having some knowledge of web programming can be helpful for customizing site and troubleshooting.
-All that's required is ..
-
+However, all that's REQUIRED is:
 1. [A GitHub account](https://github.com/)
 2. [A Google account](https://accounts.google.com/)
-3. Your images hosted on the web (Flickr, Imgur, etc...)
+3. Your images and videos hosted on the web (Flickr, Imgur, YouTube, Vimeo, GitHub, etc...)
 
 These intructions will help you set up a Google Spreadsheet and GitHub Pages site, a totally free set-up. 
 
