@@ -1,4 +1,4 @@
-<h2>A free, fast, and easy-to-edit portfolio website for artists and designers.</h2>
+# A free, fast, and easy-to-edit portfolio website for artists and designers.
 
 * Simply designed to showcase your work 
 * Fast and repsonsive on desktop and mobile
@@ -6,15 +6,18 @@
 * Easily updated via Google Sheets
 * Free to use and edit without attribution*
 
-To see the site in action, visit [samt.work](https://samt.work). Also, visit the [Google Sheet](https://docs.google.com/spreadsheets/d/1rvivc9pnHCLM84f4JuXdvfaah-XlbHpvQ_ORprPTJLg/edit?usp=sharing).
+## Sample Sites
+ * [https://samt.work](https://samt.work) ([source](https://docs.google.com/spreadsheets/d/1rvivc9pnHCLM84f4JuXdvfaah-XlbHpvQ_ORprPTJLg/edit?usp=sharing))
+ * [Portfolio Site example]() ([source]())
 
+## Requirements
 Having some knowledge of web programming can be helpful for customizing site and troubleshooting.
 However, all that's REQUIRED is:
-1. [A GitHub account](https://github.com/)
-2. [A Google account](https://accounts.google.com/)
-3. Your images and videos hosted on the web (Flickr, Imgur, YouTube, Vimeo, GitHub, etc...)
+* [A GitHub account](https://github.com/)
+* [A Google account](https://accounts.google.com/)
+* Your images and videos hosted on the web (Flickr, Imgur, YouTube, Vimeo, GitHub, etc...)
 
-These intructions will help you set up a Google Spreadsheet and GitHub Pages site, a totally free set-up. 
+## Instructions
 
 ### 1. Fork Repo
 On GitHub, you should see a 'fork' button in the top right. Click it and select the account where you will keep the portfolio site. 
