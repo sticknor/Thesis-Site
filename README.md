@@ -4,16 +4,16 @@
 * Fast and repsonsive on desktop and mobile
 * Simple setup 
 * Easily updated via Google Sheets
-* Code is free to use and edit without attribution*
+* Code is free to use and edit without attribution
 
 ## Sample Sites
  * [https://samt.work](https://samt.work) ([source](https://docs.google.com/spreadsheets/d/1rvivc9pnHCLM84f4JuXdvfaah-XlbHpvQ_ORprPTJLg/edit?usp=sharing))
  * [Portfolio Site example]() ([source]())
  
-Have a site you want to share here? Please submit a pull request, or reach out to srticknor@gmail.com
+*If you use this project to build your site, please let me know and I will add it here. Reach out to srticknor@gmail.com*
 
 ## Requirements
-Having some knowledge of web programming can be helpful for customizing site and troubleshooting.
+Having some knowledge of web programming can be helpful for customizing your site and troubleshooting.
 However, all that's REQUIRED is:
 * [A GitHub account](https://github.com/)
 * [A Google account](https://accounts.google.com/)
@@ -47,8 +47,4 @@ A sample sheet is available here. It contains each of the page types. Feel free 
 ### 3. Publishing Site
 
 ### 4. Adding A Custom Domain (Recommended, Not Required) 
-
-
-
-\*The photographs of my artwork and other creative content are NOT open source. They are included as a helpful example.
 
