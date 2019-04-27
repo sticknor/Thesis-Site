@@ -103,7 +103,7 @@ class About extends Page {
   render() {
   	this.setupPage()
 
-    var rows = this.getCurrentRows();
+    var rows = this.subOptions[getCurrentHash()].rows;
   	for (var row in rows) {
   		var rowData = rows[row];
   		// Add header
