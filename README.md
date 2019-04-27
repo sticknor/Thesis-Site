@@ -46,7 +46,7 @@ You will need to follow the templates closely in order for your site to render p
 Go to your Google Sheet and click `File -> Publish to the web...`. Publish the entire document then close this dialogue. 
 
 ### 3. Add Sheet ID To Your Repo 
-* Your sheet id is found its url. Look for the string of numbers and letters between `https://docs.google.com/spreadsheets/d/` and `/edit....` For example, my sheet url is `https://docs.google.com/spreadsheets/d/1rvivc9pnHCLM84f4JuXdvfaah-XlbHpvQ_ORprPTJLg/edit#gid=541725311`, so its sheet ID is `1rvivc9pnHCLM84f4JuXdvfaah-XlbHpvQ_ORprPTJLg`
+* Your Sheet ID can be found in its URL. Look for the string of numbers and letters between `https://docs.google.com/spreadsheets/d/` and `/edit....` For example, my Sheet URL is `https://docs.google.com/spreadsheets/d/1rvivc9pnHCLM84f4JuXdvfaah-XlbHpvQ_ORprPTJLg/edit#gid=541725311`, so my Sheet ID is `1rvivc9pnHCLM84f4JuXdvfaah-XlbHpvQ_ORprPTJLg`
 * Go to your portfolio site repo (on GitHub.com)
 * Open `index.html` and click the edit button to make changes
 * Change line 26 to `var site = new Site(sheetID="YOUR SHEET ID HERE");`
