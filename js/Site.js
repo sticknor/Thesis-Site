@@ -31,7 +31,7 @@ class Site {
       this.details[rowValues[0]] = rowValues.splice(1, rowValues.length);
     }
 
-    hasOption = function(details, option_name) {
+    var hasOption = function(details, option_name) {
       return ((option_name in details) && (details[option_name].length > 0));
     }
 
