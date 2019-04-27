@@ -8,7 +8,7 @@
 
 ## Sample Sites
  * [https://samt.work](https://samt.work) ([source](https://docs.google.com/spreadsheets/d/1rvivc9pnHCLM84f4JuXdvfaah-XlbHpvQ_ORprPTJLg/edit?usp=sharing))
- * [Portfolio Site example]() ([source]())
+ * [Portfolio Site example]() ([source](https://docs.google.com/spreadsheets/d/1CqeQA0AkN-1WGU28zhnaJbBr5f4gZfaTE8TW3mmB7Q4/edit?usp=sharing))
  
 *If you use this project to build your site, please [let me know](srticknor@gmail.com) so I can add it here!*
 
@@ -22,15 +22,16 @@ However, all that's REQUIRED is:
 ## Instructions
 
 ### 1. Fork Repo
-On GitHub, you should see a 'fork' button in the top right. Click it and select the account where you will keep the portfolio site. 
-Once you have done this, you have your own copy of the code that you can edit and customize. 
+Click the 'Fork' button in the top right corner of this project page. Then, select the GitHub account where you will keep the code for your portfolio site.
 
-### 2. Create Site in Google Sheets
-Your Google Sheet will contain the site plan for your website. Menus, layouts, and content will be generated based on what you put into the sheet. You will need to follow the templates in order for your site to render properly. <br>
-A sample sheet is available here. It contains each of the page types. Feel free to copy this sheet into your own Google Drive (File -> Make a copy...)
+### 2. Build Site In Google Sheets
+Your Google Sheet will contain the site plan for your website. Menus, layouts, and content will be generated based on what you put into the sheet. Copy this [starter sheet](https://docs.google.com/spreadsheets/d/1CqeQA0AkN-1WGU28zhnaJbBr5f4gZfaTE8TW3mmB7Q4/edit?usp=sharing) into your own Google account. 
 
 #### 2a. Editing The Google Sheet
 
+Each tab of the Google Sheet will become a menu option in your website. Menu items can have subitems, and be built accodring to the following tempaltes availabe:
+
+You will need to follow the templates closely in order for your site to render properly:
 ##### Splash
 ##### Carousel
 ##### Grid
@@ -40,11 +41,24 @@ A sample sheet is available here. It contains each of the page types. Feel free 
 ##### ARCHIVE
 
 #### 2b. Verify / Format The Google Sheet
-#### 2b. Things to watch out for
 
-### 3. Add Your Google Sheet ID To Your Repo
+#### Publish Google Sheet
+Go to your Google Sheet and click `File -> Publish to the web...`. Publish the entire document then close this dialogue. 
 
-### 3. Publishing Site
+#### Get Sheet ID
+Your sheet id is found its url. Look for the string of numbers and letters between `https://docs.google.com/spreadsheets/d/` and `/edit....`. 
 
-### 4. Adding A Custom Domain (Recommended, Not Required) 
+For example, my sheet url is 
+`https://docs.google.com/spreadsheets/d/1rvivc9pnHCLM84f4JuXdvfaah-XlbHpvQ_ORprPTJLg/edit#gid=541725311`, 
+so its sheet ID is `1rvivc9pnHCLM84f4JuXdvfaah-XlbHpvQ_ORprPTJLg`
+
+### 3. Add Sheet ID To Your Repo 
+* Go to your portfolio site repo (on GitHub.com)
+* Open `index.html` and click the edit button to make changes
+* Change line 26 to `var site = new Site(sheetID="YOUR SHEET ID HERE");`
+* Scroll to the bottom and commit your changes
+
+### 4. Publish Site With GitHub Pages
+
+### 5. Adding A Custom Domain (Recommended - Not Required) 
 
