@@ -9,6 +9,8 @@
 ## Sample Sites
  * [https://samt.work](https://samt.work) ([source](https://docs.google.com/spreadsheets/d/1rvivc9pnHCLM84f4JuXdvfaah-XlbHpvQ_ORprPTJLg/edit?usp=sharing))
  * [Portfolio Site example]() ([source]())
+ 
+Have a site you want to share here? Please submit a pull request, or reach out to srticknor@gmail.com
 
 ## Requirements
 Having some knowledge of web programming can be helpful for customizing site and troubleshooting.
