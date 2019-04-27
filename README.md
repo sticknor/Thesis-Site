@@ -4,7 +4,7 @@
 * Fast and repsonsive on desktop and mobile
 * Simple setup 
 * Easily updated via Google Sheets
-* Free to use and edit without attribution*
+* Code is free to use and edit without attribution*
 
 ## Sample Sites
  * [https://samt.work](https://samt.work) ([source](https://docs.google.com/spreadsheets/d/1rvivc9pnHCLM84f4JuXdvfaah-XlbHpvQ_ORprPTJLg/edit?usp=sharing))
