@@ -2,12 +2,6 @@ class Scroll extends Page {
 
   constructor(data) {
     super(data);
-
-    this.subOptions = Object.assign({}, this.data.subOptions);
-    this.subOptions[this.data.hash] = { "hash" : this.data.hash, rows: this.data.rows, title: this.data.title, index: 0, isThumbnailView: false };
-    for (var subOption in this.subOptions) {
-      this.subOptions[subOption].index = 0;
-    }
   }
 
   renderIntro(rowData) {

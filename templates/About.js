@@ -103,8 +103,9 @@ class About extends Page {
   render() {
   	this.setupPage()
 
-  	for (var row in this.data.rows) {
-  		var rowData = this.data.rows[row];
+    var rows = this.getCurrentRows();
+  	for (var row in rows) {
+  		var rowData = rows[row];
   		// Add header
   		var container;
   		if ($("#about"+rowData.heading).length) {

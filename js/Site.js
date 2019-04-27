@@ -4,7 +4,8 @@ class Site {
     this.pages = {};
     this.sheetID = sheetID;
     this.menu = new Menu();
-    this.importSheets();
+    // READING FROM GOOGLE SHEETS AND PARSING INTO SITE OBJECT
+    this.googleSheet = new GoogleSheet(this.sheetID, this.onGoogleSheetTabReady.bind(this));
     window.onpopstate = this.render.bind(this)
     $(window).resize(this.windowResized.bind(this));
   }
@@ -22,9 +23,34 @@ class Site {
     this.pages[getCurrentPage()].render()
   }
 
-  setSiteDetails(details) {
-    this.title = details.title;
-    document.title = this.title;
+  setSiteDetails(rows) {
+    this.details = {};
+
+    for (var rowNum in rows) {
+      var rowValues = Object.values(rows[rowNum]);
+      this.details[rowValues[0]] = rowValues.splice(1, rowValues.length);
+    }
+
+    hasOption = function(details, option_name) {
+      return ((option_name in details) && (details[option_name].length > 0));
+    }
+
+    // Add site title.
+    if (hasOption(this.details, 'title')) {
+      if (hasOption(this.details, 'titleAnimation')) {
+        this.titleAnimator = new TitleAnimator(this.details['title'], this.details['titleAnimation'][0]);
+      } else {
+        document.title = this.details['title'];
+      }
+    } else {
+      console.log('No title found in site DETAILS!');
+    }
+
+    // Add favicon.
+    if (hasOption(this.details, 'favicon')) {
+      $('#favicon').attr('href', this.details['favicon'][0]);
+    }
+
   }
 
   addPage(pageData) {
@@ -47,64 +73,37 @@ class Site {
         break;
       default:
         console.log('Unexpected page template: ' + pageData.template)
+        return;
     }
     this.pages[page.data.hash] = page;
     this.menu.addOption(page.data.hash, page.data.title, page.data.index, page.data.subOptions);
     return page;
   }
 
-  // READING FROM GOOGLE SHEETS AND PARSING INTO SITE OBJECT
-  importSheets(sheetNum=1) {
-    var url = 'https://spreadsheets.google.com/feeds/list/' + this.sheetID + '/' + sheetNum + '/public/basic?alt=json';
-
-    $.ajax({
-      url: url,
-      dataType: "json",
-      site: $(this),
-      success: function(data) {
-        site.importSheets(sheetNum+1);
-
-        var sheetTitle = data.feed.title.$t;
-
-        var title = sheetTitle.split("-")[0];
-        var template = sheetTitle.split("-")[1] || "NUFIN";
-
-        if (title === "ARCHIVE") return;
-
+  onGoogleSheetTabReady(tab) {
+    switch(tab['title']){
+      case "ARCHIVE":
+        break;
+      case "DETAILS":
+        this.setSiteDetails(tab['rows']);
+        break;
+      default:
         var subOptions = {};
-        var rows = [];
-        data.feed.entry !== undefined && data.feed.entry.map((entry, index) => {
-          var rawData = entry.content.$t;
-        
-          var rowData = {};
-
-          rawData.replace(/(.+?)(?:: )(.+?)(?:, |$)/g, function(match, key, value) {
-            rowData[key] = value;
-            if (key === "group") { 
-              var hash = title.split(" ").join("").toLowerCase()+"-"+value.split(" ").join("").toLowerCase();
-              if (!subOptions.hasOwnProperty(hash)) {
-                subOptions[hash] = {menuOrder: index, "title" : value, hash, rows: []};
-              }
-              subOptions[hash].rows.push(rowData);
+        for (var rowNum in tab['rows']) {
+          var row = tab['rows'][rowNum]
+          if ('group' in row) { 
+            var subOptionHash = tab['title'].split(' ').join('').toLowerCase() + '-' + row['group'].split(' ').join('').toLowerCase();
+            if (!subOptions.hasOwnProperty(subOptionHash)) {
+              subOptions[subOptionHash] = {menuOrder: row['index'], title: row['group'], hash: subOptionHash, rows: []};
             }
-          });
-
-          rows.push(rowData);
-        });
-
-        if (title === "DETAILS") {
-          site.setSiteDetails(rows[0])
-        } else {
-          var hash = sheetNum === 1? '': title.split(' ').join('').toLowerCase();
-          var page = site.addPage({ title, index: sheetNum, template, hash, subOptions, rows });
-          if (hash === getCurrentPage()) {
-            page.render()
+            subOptions[subOptionHash].rows.push(row);
           }
         }
-      },
-      error: function() {
-        console.log('No more sheets found. Last sheet was ' + (sheetNum - 1))
-      }
-    });
+        var tabHash = tab['tabNum'] === 1? '': tab['title'].split(' ').join('').toLowerCase();
+        var page = this.addPage({ title: tab['title'], index: tab['tabNum'], template: tab['template'], hash: tabHash, subOptions, rows: tab['rows'] });
+        if (tabHash === getCurrentPage()) {
+          page.render();
+        }
+    }
   }
 }

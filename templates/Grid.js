@@ -6,8 +6,9 @@ class Grid extends Page {
     grid.attr("id", "grid");
     $("#page").append(grid);
 
-    for (var i in this.data.rows) {
-      var work = this.data.rows[i];
+    var rows = this.subOptions[getCurrentHash()].rows;
+    for (var i in rows) {
+      var work = rows[i];
       var gridItem = $("<div>");
       gridItem.addClass("gridItem");
 

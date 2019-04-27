@@ -3,7 +3,8 @@ class Splash extends Page {
   render() {
     this.setupPage()
 
-    var imageData = this.data.rows[0];
+    var rows = this.subOptions[getCurrentHash()].rows;
+    var imageData = rows[0];
 
     var image = $("<img>");
     image.attr("src", imageData["imageurl"]);
