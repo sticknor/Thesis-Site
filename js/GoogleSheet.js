@@ -47,7 +47,8 @@ class GoogleSheet {
           sheet.onTabReady(tab);
         }
       },
-      error: function() {
+      error: function(e) {
+        console.log(e)
         console.log('No more sheets found. Last sheet was ' + (tabNum - 1));
         sheet.allTabsReady = true;
       }
