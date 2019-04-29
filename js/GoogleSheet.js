@@ -16,7 +16,7 @@ class GoogleSheet {
     return this.allTabs;
   }
 
-  fetchTabs(tabNum=1) {
+  fetchTabs(tabNum=2) {
     var url = 'https://spreadsheets.google.com/feeds/list/' + this.sheetID + '/' + tabNum + '/public/basic?alt=json';
     var sheet = this;
     $.ajax({
