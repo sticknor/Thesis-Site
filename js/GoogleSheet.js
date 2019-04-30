@@ -16,7 +16,7 @@ class GoogleSheet {
     return this.allTabs;
   }
 
-  fetchTabs(tabNum=2) {
+  fetchTabs(tabNum=1) {
     var url = 'https://spreadsheets.google.com/feeds/list/' + this.sheetID + '/' + tabNum + '/public/basic?alt=json';
     var sheet = this;
     $.ajax({
@@ -49,8 +49,38 @@ class GoogleSheet {
       },
       error: function(e) {
         console.log(e)
-        console.log('No more sheets found. Last sheet was ' + (tabNum - 1));
-        sheet.allTabsReady = true;
+        if (backup[tabNum] !== undefined) {
+
+          var data = backup[tabNum];
+
+          sheet.fetchTabs(tabNum + 1);
+
+          var tab = {};
+          tab['tabNum'] = tabNum
+
+          var tabTitle = data.feed.title.$t;
+          tab['title'] = tabTitle.split('-')[0];
+          tab['template'] = tabTitle.split('-')[1] || 'NoTemplateFound';
+
+          tab['rows'] = [];
+          data.feed.entry !== undefined && data.feed.entry.map((entry, index) => {
+            var rawData = entry.content.$t;
+            var rowData = {};
+            rawData.replace(/(.+?)(?:: )(.+?)(?:, |$)/g, function(match, key, value) {
+              rowData[key] = value;
+            });
+            tab['rows'].push(rowData);
+          });
+
+          sheet.allTabs[tabNum] = tab;
+          if (sheet.onTabReady !== undefined) {
+            sheet.onTabReady(tab);
+          }
+
+        } else {
+          console.log('No more sheets found. Last sheet was ' + (tabNum - 1));
+          sheet.allTabsReady = true;
+        }
       }
     });
   }
