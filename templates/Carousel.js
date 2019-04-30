@@ -3,24 +3,17 @@ class Carousel extends Page {
 
   constructor(data) {
     super(data);
-
-    this.subOptions = Object.assign({}, this.data.subOptions);
-    this.subOptions[this.data.hash] = { "hash" : this.data.hash, rows: this.data.rows, title: this.data.title, index: 0, isThumbnailView: false };
-    for (var subOption in this.subOptions) {
-      this.subOptions[subOption].index = 0;
-    }
   }
 
 
   renderMobileView() {
-    this.setupPage()
-
     var grid = $("<div>");
     grid.attr("id", "grid");
     $("#page").append(grid);
 
-    for (var i in this.subOptions[getCurrentHash()].rows) {
-      var work = this.subOptions[getCurrentHash()].rows[i];
+    var rows = this.subOptions[getCurrentHash()].rows;
+    for (var i in rows) {
+      var work = rows[i];
       var gridItem = $("<div>");
       gridItem.addClass("gridItem");
 
@@ -53,8 +46,9 @@ class Carousel extends Page {
     var thumbnailGrid = $("<div>");
     thumbnailGrid.addClass("thumbnailGrid");
 
-    for (var i in this.subOptions[getCurrentHash()].rows) {
-      var imageData = this.subOptions[getCurrentHash()].rows[i];
+    var rows = this.subOptions[getCurrentHash()].rows;
+    for (var i in rows) {
+      var imageData = rows[i];
 
       var thumbnailClick = function (event) { 
         this.setIndex(event.data.i); 
