@@ -27,6 +27,7 @@ body{
 	font-family: 'Open Sans', sans-serif;
 	font-family: 'Lora', serif;
 	overflow: hidden;
+	overscroll-behavior: none;
 }
 
 .aboutContainer {
@@ -125,7 +126,7 @@ body{
 	justify-content: flex-start;
 	align-items: center;
 	overflow: scroll;
-
+	-webkit-overflow-scrolling: touch;
 }
 
 #page {
@@ -137,7 +138,7 @@ body{
     padding: 30px 30px 30px 0px;
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
-
+    margin-bottom: 30px;
 }
 
 .gridItem {
@@ -328,6 +329,7 @@ body{
   #page {
   	overflow: initial;
     padding: 5%;
+    padding-bottom: 30px;
     padding-top: 0px;
     height: 100%;
     display: block;
