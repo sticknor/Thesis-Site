@@ -26,6 +26,7 @@ body{
 	color: #333;
 	font-family: 'Open Sans', sans-serif;
 	font-family: 'Lora', serif;
+	overflow: hidden;
 }
 
 .aboutContainer {
@@ -123,6 +124,7 @@ body{
 
 	justify-content: flex-start;
 	align-items: center;
+	overflow: scroll;
 
 }
 
@@ -134,6 +136,8 @@ body{
     flex-direction: column;
     padding: 30px 30px 30px 0px;
     overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+
 }
 
 .gridItem {
