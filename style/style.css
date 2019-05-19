@@ -190,7 +190,7 @@ body{
 	display: block;
 	text-decoration: none;
 	font-size: 18px;
-	margin: 10px 0px;
+	padding: 5px 0px;
 	width: 100%;
 }
 
@@ -248,8 +248,6 @@ body{
 
 .menuOption.subOption {
 	font-size: 16px;
-	padding-bottom: 10px;
-	margin: 0px;
 	color: rgb(150, 150, 150);
 
 }
@@ -318,12 +316,15 @@ body{
 @media screen and (max-width: 850px) {
   body {
     flex-direction: column;
+            -webkit-overflow-scrolling: touch;
+overflow: initial;
   }
 
   #menuContainer {
   	display: block;
   	width: 90%;
   	padding: 5%;
+  	overflow: initial;
   }
 
   #page {
@@ -333,6 +334,7 @@ body{
     padding-top: 0px;
     height: 100%;
     display: block;
+
   }
 
   #fullImage {
@@ -348,12 +350,14 @@ body{
    }
 
    .menuOption, .subOption {
-   	margin: 5px 0px;
-   	padding-bottom: 0px;
+   	padding: 5px 0px;
+   	margin: 0px;
    }
 
    .menuOption.subOption {
-   	padding-bottom: 0px;
+   	padding-bottom: 5px;
+   	padding-top: 0px;
+   	margin: 0px;
    }
 
    .homeMenuOption {
