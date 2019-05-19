@@ -76,6 +76,7 @@ class Carousel extends Page {
     var image = $("<img>");
     image.attr("src", imageData["imageurl"]);
     image.attr("id", "fullImage");
+    image.on("click", this.nextIndex.bind(this));
     $("#page").append(image);
 
     var imageDetails = $("<div>");
