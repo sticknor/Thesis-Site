@@ -125,6 +125,7 @@ class Carousel extends Page {
     carouselControlsContainer.append(carouselControls);
     carouselControlsContainer.append(carouselControlsShowThumbnails);
 
+
     $("#menuContainer").append(carouselControlsContainer);
   }
 
@@ -151,8 +152,18 @@ class Carousel extends Page {
     this.render()
   }
 
+  checkKey(e) {
+    if (e.keyCode === 37) { this.prevIndex() }
+    else if (e.keyCode === 39) { this.nextIndex() }
+  }
+
   render() {
     this.setupPage();
+
+    // unsubscribe all handlers
+    $(document).off("keydown");
+    $(document).on("keydown", this.checkKey.bind(this));
+
     if (window.innerWidth <= 850) {
       this.renderMobileView();
     } else if (this.subOptions[getCurrentHash()].isThumbnailView) {
