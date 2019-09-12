@@ -81,10 +81,11 @@ class Site {
   }
 
   onGoogleSheetTabReady(tab) {
+    console.log(tab)
     switch(tab['title']){
       case "ARCHIVE":
         break;
-      case "DETAILS":
+      case "BROWSER":
         this.setSiteDetails(tab['rows']);
         break;
       default:
