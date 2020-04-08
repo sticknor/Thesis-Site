@@ -1,8 +1,8 @@
 class MenuSubOption {
 
-  constructor(data) {
-    this.title = data.title;
-    this.hash = data.hash;
+  constructor(title, hash) {
+    this.title = title;
+    this.hash = hash;
   }
 
   onClick() {
@@ -24,20 +24,16 @@ class MenuSubOption {
 
 class MenuOption {
 
-  constructor(pageHash, pageTitle, subOptions) {
-    this.subOptions = [];
-    this.expanded = false;
-    this.title = pageTitle;
-    this.hash = pageHash;
-    if (getCurrentPage() === this.hash) {
-      this.expanded = true;
-    }
+  constructor(title, hash, index) {
+    this.title = title;
+    this.hash = hash;
+    this.index = index;
+    this.suboptions = [];
+    this.expanded = getCurrentHash().split("-")[0] === this.hash;
+  }
 
-    for (var subOption in subOptions) {
-      this.subOptions.push(new MenuSubOption(subOptions[subOption]));
-    }
-    this.subOptions.sort(function(a, b){ a.menuOrder - b.menuOrder });
-
+  addSubOption(title, hash) {
+    this.suboptions.push(new MenuSubOption(title, hash))
   }
 
   toggle() {
@@ -45,7 +41,7 @@ class MenuOption {
   }
 
   onClick() {
-    if (this.subOptions.length === 0) {
+    if (this.suboptions.length === 0) {
       window.location.hash = this.hash;
     }
     else { 
@@ -53,23 +49,25 @@ class MenuOption {
     }
   }
 
-  render(index) {
+  render() {
     var menuOption = $("<div>");
     menuOption.html(this.title);
     menuOption.addClass("menuOption clickable");
-    if (parseInt(index) === 1) {
+    if (this.index === 0) {
       menuOption.addClass("homeMenuOption");
     }
     menuOption.attr("data-hash", this.hash);
     menuOption.on("click", this.onClick.bind(this));
+
     if (getCurrentHash() === this.hash) {
       menuOption.addClass("menuSelection");
     }
+
     $("#menu").append(menuOption);
 
     if (this.expanded) {
-      for (var subOption in this.subOptions) {
-        this.subOptions[subOption].render()
+      for (var subOption in this.suboptions) {
+        this.suboptions[subOption].render()
       }
     }
   }
@@ -81,8 +79,30 @@ class Menu {
     this.options = {};
   }
 
-  addOption(pageHash, pageTitle, index, subOptions) {
-    this.options[index] = new MenuOption(pageHash, pageTitle, subOptions);
+  createMenu(pages) {
+    // Sort it here
+    var orderedPages = new Array(Object.keys(pages).length);
+    for (var page in pages) {
+      orderedPages[pages[page].order] = {
+        category: pages[page].category,
+        group: pages[page].group,
+        order: pages[page].order,
+        hash: pages[page].hash
+      }
+    }
+
+    for (var page in orderedPages) {
+      var pageData = orderedPages[page];
+
+      if (this.options[pageData.category] === undefined) {
+        var pageHash = pageData.group === undefined? pageData.hash : pageData.category.toLowerCase();
+        this.options[pageData.category] = new MenuOption(pageData.category, pageHash, pageData.order);
+      }
+
+      if (pageData.group && pageData.category !== "about") {
+        this.options[pageData.category].addSubOption(pageData.group, pageData.hash);
+      }
+    }
     this.render();
   }
 
@@ -96,7 +116,7 @@ class Menu {
     $("#menu").on("click", this.onClick.bind(this));
 
     for (var index in this.options) {
-      this.options[index].render(index)
+      this.options[index].render()
     }
   }
 }

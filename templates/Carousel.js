@@ -3,39 +3,48 @@ class Carousel extends Page {
 
   constructor(data) {
     super(data);
+    this.isThumbnailView = false;
+    this.index = 0;
   }
-
 
   renderMobileView() {
     var grid = $("<div>");
     grid.attr("id", "grid");
     $("#page").append(grid);
 
-    var rows = this.subOptions[getCurrentHash()].rows;
+    var rows = this.data.rows;
     for (var i in rows) {
       var work = rows[i];
       var gridItem = $("<div>");
       gridItem.addClass("gridItem");
 
       var image = $("<img>");
-      image.attr("src", work["imageurl"]);
+      image.attr("src", work.get("Image")[0].thumbnails.large.url);
       image.attr("id", "gridImage");
       gridItem.append(image);
       
       var imageDetails = $("<div>");
-      if (work["title"] !== undefined && work["title"] !== "") {
+      if (work.get("Title") !== undefined) {
         var title = $("<div>");
-        title.html(work["title"]);
+        title.html(work.get("Title"));
         title.addClass("imageTitle");
         imageDetails.append(title);
       }
-      var detailsString = makeDetailsLine([work["medium"], work["dimensions"], work["year"]]);
+      var detailsString = makeDetailsLine([work.get("Medium"), work.get("Dimensions"), work.get("Year")]);
       if (detailsString !== "") {
         var details = $("<div>");
         details.html(detailsString);
         details.addClass("imageDetails");
         imageDetails.append(details);
       }
+
+      if (work.get("Description") !== undefined) {
+        var description = $("<div>");
+        description.html(work.get("Description"));
+        description.addClass("imageDescription");
+        imageDetails.append(description);
+      }
+
       $(gridItem).append(imageDetails);
 
       $("#grid").append(gridItem);
@@ -46,7 +55,7 @@ class Carousel extends Page {
     var thumbnailGrid = $("<div>");
     thumbnailGrid.addClass("thumbnailGrid");
 
-    var rows = this.subOptions[getCurrentHash()].rows;
+    var rows = this.data.rows;
     for (var i in rows) {
       var imageData = rows[i];
 
@@ -55,7 +64,7 @@ class Carousel extends Page {
       }
 
       var thumbnail = $("<img>");
-      thumbnail.attr("src", imageData.thumbnail || imageData.imageurl);
+      thumbnail.attr("src", imageData.get("Image")[0].thumbnails.large.url);
       thumbnail.addClass("thumbnail");
       thumbnail.on("click", {i}, thumbnailClick.bind(this));
 
@@ -71,10 +80,10 @@ class Carousel extends Page {
     var carouselControlsContainer = $("<div>");
     carouselControlsContainer.attr("id", "carouselControlsContainer");
 
-    var imageData = this.subOptions[getCurrentHash()].rows[this.subOptions[getCurrentHash()].index];
+    var imageData = this.data.rows[this.index];
 
     var image = $("<img>");
-    image.attr("src", imageData["imageurl"]);
+    image.attr("src", imageData.get("Image")[0].thumbnails.large.url); // TODO: Change the thing to load full over thumbnail
     image.attr("id", "fullImage");
     image.on("click", this.nextIndex.bind(this));
     $("#page").append(image);
@@ -82,14 +91,14 @@ class Carousel extends Page {
     var imageDetails = $("<div>");
     imageDetails.addClass("imageDetailsContainer");
 
-    if (imageData["title"] !== undefined) {
+    if (imageData.get("Title") !== undefined) {
       var title = $("<div>");
-      title.html(imageData["title"]);
+      title.html(imageData.get("Title"));
       title.addClass("imageTitle");
       imageDetails.append(title);
     }
 
-    var detailsString = makeDetailsLine([imageData["medium"], imageData["dimensions"], imageData["year"]]);
+    var detailsString = makeDetailsLine([imageData.get("Medium"), imageData.get("Dimensions"), imageData.get("Year")]);
     if (detailsString !== "") {
       var details = $("<div>");
       details.html(detailsString);
@@ -97,58 +106,68 @@ class Carousel extends Page {
       imageDetails.append(details);
     }
 
+    if (imageData.get("Description") !== undefined) {
+      var description = $("<div>");
+      description.html(imageData.get("Description"));
+      description.addClass("imageDescription");
+      imageDetails.append(description);
+    }
+
     var carouselIndexDisplay = $("<div>");
-    carouselIndexDisplay.attr("id", "carouselIndexDisplay");
-    carouselIndexDisplay.html((parseInt(this.subOptions[getCurrentHash()].index)+1)+" of "+parseInt(this.subOptions[getCurrentHash()].rows.length));
+      carouselIndexDisplay.attr("id", "carouselIndexDisplay");
+      carouselIndexDisplay.html((parseInt(this.index)+1)+" of "+parseInt(this.data.rows.length));
     var carouselControls = $("<div>");
-    carouselControls.attr("id", "carouselControls");
+      carouselControls.attr("id", "carouselControls");
     var carouselControlsPrev = $("<div>");
-    carouselControlsPrev.html("&#171;");
-    carouselControlsPrev.addClass("clickable");
-    carouselControlsPrev.attr("id", "carouselControlPrev")
-    carouselControlsPrev.on("click", this.prevIndex.bind(this));
+      carouselControlsPrev.html("&#171;");
+      carouselControlsPrev.addClass("clickable");
+      carouselControlsPrev.attr("id", "carouselControlPrev")
+      carouselControlsPrev.on("click", this.prevIndex.bind(this));
     var carouselControlsNext = $("<div>");
-    carouselControlsNext.html("&#187;");
-    carouselControlsNext.addClass("clickable");
-    carouselControlsNext.attr("id", "carouselControlNext")
-    carouselControlsNext.on("click", this.nextIndex.bind(this));
+      carouselControlsNext.html("&#187;");
+      carouselControlsNext.addClass("clickable");
+      carouselControlsNext.attr("id", "carouselControlNext")
+      carouselControlsNext.on("click", this.nextIndex.bind(this));
     var carouselControlsShowThumbnails = $("<div>");
-    carouselControlsShowThumbnails.html("Show Thumbnails");
-    carouselControlsShowThumbnails.attr("id", "carouselControlShowThumbnails")
-    carouselControlsShowThumbnails.addClass("clickable");
-    carouselControlsShowThumbnails.on("click", this.showThumbnails.bind(this));
-    carouselControls.append(carouselControlsPrev);
-    carouselControls.append(carouselIndexDisplay);
-    carouselControls.append(carouselControlsNext);
+      carouselControlsShowThumbnails.html("Show Thumbnails");
+      carouselControlsShowThumbnails.attr("id", "carouselControlShowThumbnails")
+      carouselControlsShowThumbnails.addClass("clickable");
+      carouselControlsShowThumbnails.on("click", this.showThumbnails.bind(this));
+      carouselControls.append(carouselControlsPrev);
+      carouselControls.append(carouselIndexDisplay);
+      carouselControls.append(carouselControlsNext);
     
     carouselControlsContainer.append(imageDetails);
-    carouselControlsContainer.append(carouselControls);
-    carouselControlsContainer.append(carouselControlsShowThumbnails);
 
+    var rows = this.data.rows;
+    if (rows.length > 1) {
+      carouselControlsContainer.append(carouselControls);
+      carouselControlsContainer.append(carouselControlsShowThumbnails);
+    }
 
     $("#menuContainer").append(carouselControlsContainer);
   }
 
   showThumbnails() {
-    this.subOptions[getCurrentHash()].isThumbnailView = true;
-    this.render()
+    this.isThumbnailView = true;
+    this.render();
   }
 
   prevIndex() {
-    if (this.subOptions[getCurrentHash()].index === 0) {
-      this.setIndex(this.subOptions[getCurrentHash()].rows.length - 1)
+    if (this.index === 0) {
+      this.setIndex(this.data.rows.length - 1)
     } else {
-      this.setIndex(this.subOptions[getCurrentHash()].index - 1);
+      this.setIndex(this.index - 1);
     }
   }
 
   nextIndex() {
-    this.setIndex((this.subOptions[getCurrentHash()].index + 1) % this.subOptions[getCurrentHash()].rows.length);
+    this.setIndex((this.index + 1) % this.data.rows.length);
   }
 
   setIndex(index) {
-    this.subOptions[getCurrentHash()].index = parseInt(index);
-    this.subOptions[getCurrentHash()].isThumbnailView = false;
+    this.index = parseInt(index);
+    this.isThumbnailView = false;
     this.render()
   }
 
@@ -166,7 +185,7 @@ class Carousel extends Page {
 
     if (window.innerWidth <= 850) {
       this.renderMobileView();
-    } else if (this.subOptions[getCurrentHash()].isThumbnailView) {
+    } else if (this.isThumbnailView) {
       this.renderThumbnailView();
     } else {
       this.renderCarouselView();

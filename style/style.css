@@ -47,11 +47,28 @@ body{
 }
 
 .aboutContainerHeading {
+    margin-top: 20px;
     margin-bottom: 15px;
-    padding-bottom: 15px;
     font-size: 18px;
-    border-bottom: 1px solid rgb(180, 180, 200);
+    border-bottom: 1px solid rgb(200, 200, 200);
+    color: rgb(100, 100, 100);
 }
+
+.entryCV {
+  margin-bottom: 15px;
+}
+
+.titleCV {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+.preDot::before {
+  content: "\00a0\2022\00a0";
+  color: rgb(200, 200, 200);
+}
+
 
 .aboutmultilineB {
     margin-bottom: 15px;
@@ -81,8 +98,12 @@ body{
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
-    border-bottom: solid 1px rgb(150, 150, 150);
+    border-bottom: solid 1px rgb(200, 200, 200);
     padding-bottom: 20px;
+    margin-top: 10px;
+    border-top: solid 1px rgb(200, 200, 200);
+    padding-top: 20px;
+    width: 100%;
 }
 
 .thumbnail {
@@ -97,15 +118,24 @@ body{
 }
 
 .imageDetails, .splashSubText {
-    text-align: center;
-    color: rgb(150, 150, 150);
+  text-align: center;
+  color: rgb(100, 100, 100);
+  margin-top: 5px;
+  width: 100%;
+}
+
+.imageDescription, .splashSubText {
+  color: rgb(100, 100, 100);
+  margin-top: 5px;
+  width: 100%;
+  text-align: center;
 }
 
 .imageTitle, .splashText {
     color: black;
-    margin-bottom: 5px;
     text-align: center;
-    /* font-weight: bold; */
+    font-style: italic;
+    width: 100%;
 }
 
 #body{
@@ -117,9 +147,9 @@ body{
 #menuContainer { 
 	display: flex;
 	position: sticky;
-    flex-direction: column;
+  flex-direction: column;
 	/* width of menu */
-	flex: .2;
+	flex: .25;
 	width: 300px;
 	padding: 30px;
 
@@ -148,7 +178,7 @@ body{
 	margin-bottom: 30px;
 }
 
-.gridItem .imageTitle, .gridItem .imageDetails {
+.gridItem .imageTitle, .gridItem .imageDetails, .imageDescription {
 	text-align: left;
 }
 
@@ -177,10 +207,22 @@ body{
 	width: 100%;
 }
 
-
-
 .grid {
 	margin-left: 4%;
+}
+
+.textPlain {
+  text-align: left;
+}
+
+.entryPlain {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.entryPlain > img{
+  width: 50%;
+  margin-bottom: 20px;
 }
 
 .menuOption, .subOption {
@@ -196,20 +238,22 @@ body{
 
 .homeMenuOption {
 	font-size: 18px;
-	border-bottom: 1px solid rgb(180, 180, 200);
+	border-bottom: 1px solid rgb(200, 200, 200);
 	padding-bottom: 20px;
 	margin-bottom: 20px;
 	width: 100%;
+  padding-top: 0px !important;
 }
 
 #carouselControlsContainer {
 	display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: flex-end;
-    flex-direction: column;
-    margin-bottom: 10px;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  margin-bottom: 10px;
 	color: black;
+  width: 100%
 }
 
 #carouselControlNext, #carouselControlPrev {
@@ -219,7 +263,7 @@ body{
 
 #carouselIndexDisplay {
 	margin: 0px 10px;
-	opacity: 0.5;
+	color: rgb(100, 100, 100);
 	user-select: none;
   width: 70px;
     text-align: center;
@@ -237,20 +281,20 @@ body{
 	content: "\2022";
 	margin-right: 8px;
 	opacity: 0;
-	color: rgb(150, 150, 150);
+	color: rgb(200, 200, 200);
 }
 
 .menuOption::after, .subOption::after {
 	content: "\2022";
 	margin-left: 8px;
 	opacity: 0;
-	color: rgb(150, 150, 150);
+	color: rgb(200, 200, 200);
 
 }
 
 .menuOption.subOption {
 	font-size: 16px;
-	color: rgb(150, 150, 150);
+	color: rgb(100, 100, 100);
 
 }
 
@@ -272,7 +316,7 @@ body{
     font-size: 18px;
     padding-bottom: 20px;
     padding-top: 10px;
-    border-bottom: 1px solid rgb(180, 180, 200);;
+    border-bottom: 1px solid rgb(200, 200, 200);;
     margin-bottom: 20px;
 }
 
@@ -319,7 +363,12 @@ body{
   body {
     flex-direction: column;
     -webkit-overflow-scrolling: touch;
-	overflow: initial;
+	 overflow: initial;
+  }
+
+  .entryPlain > img{
+    width: 100%;
+    margin-bottom: 20px;
   }
 
   #menuContainer {

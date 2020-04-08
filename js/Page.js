@@ -2,16 +2,6 @@ class Page {
   
   constructor(data) {
     this.data = data
-
-    this.subOptions = Object.assign({}, this.data.subOptions);
-    this.subOptions[this.data.hash] = { "hash" : this.data.hash, rows: this.data.rows, title: this.data.title, index: 0, isThumbnailView: false };
-    for (var subOption in this.subOptions) {
-      this.subOptions[subOption].index = 0;
-    }
-  }
-
-  currentRows() {
-    return this.subOptions[getCurrentHash()];
   }
 
   setupPage() {
