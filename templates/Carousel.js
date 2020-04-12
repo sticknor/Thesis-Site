@@ -18,9 +18,12 @@ class Carousel extends Page {
       var gridItem = $("<div>");
       gridItem.addClass("gridItem");
 
-      var image = $("<img>");
+      // var thumbnailImage = $("<img class='thumbnailImage'>");
+      // thumbnailImage.attr("src", work.get("Image")[0].thumbnails.small.url);
+      // gridItem.append(thumbnailImage);
+
+      var image = $("<img class='gridImage'>");
       image.attr("src", work.get("Image")[0].thumbnails.large.url);
-      image.attr("id", "gridImage");
       gridItem.append(image);
       
       var imageDetails = $("<div>");
@@ -57,14 +60,14 @@ class Carousel extends Page {
 
     var rows = this.data.rows;
     for (var i in rows) {
-      var imageData = rows[i];
+      var work = rows[i];
 
       var thumbnailClick = function (event) { 
         this.setIndex(event.data.i); 
       }
 
       var thumbnail = $("<img>");
-      thumbnail.attr("src", imageData.get("Image")[0].thumbnails.large.url);
+      thumbnail.attr("src", work.get("Image")[0].thumbnails.large.url);
       thumbnail.addClass("thumbnail");
       thumbnail.on("click", {i}, thumbnailClick.bind(this));
 
@@ -80,25 +83,28 @@ class Carousel extends Page {
     var carouselControlsContainer = $("<div>");
     carouselControlsContainer.attr("id", "carouselControlsContainer");
 
-    var imageData = this.data.rows[this.index];
+    var work = this.data.rows[this.index];
 
-    var image = $("<img>");
-    image.attr("src", imageData.get("Image")[0].thumbnails.large.url); // TODO: Change the thing to load full over thumbnail
-    image.attr("id", "fullImage");
+    // var thumbnailImage = $("<img class='thumbnailImage'>");
+    // thumbnailImage.attr("src", work.get("Image")[0].thumbnails.small.url);
+    // $("#page").append(thumbnailImage);
+
+    var image = $("<img class='fullImage'>");
+    image.attr("src", work.get("Image")[0].thumbnails.large.url); // TODO: Change the thing to load full over thumbnail
     image.on("click", this.nextIndex.bind(this));
     $("#page").append(image);
 
     var imageDetails = $("<div>");
     imageDetails.addClass("imageDetailsContainer");
 
-    if (imageData.get("Title") !== undefined) {
+    if (work.get("Title") !== undefined) {
       var title = $("<div>");
-      title.html(imageData.get("Title"));
+      title.html(work.get("Title"));
       title.addClass("imageTitle");
       imageDetails.append(title);
     }
 
-    var detailsString = makeDetailsLine([imageData.get("Medium"), imageData.get("Dimensions"), imageData.get("Year")]);
+    var detailsString = makeDetailsLine([work.get("Medium"), work.get("Dimensions"), work.get("Year")]);
     if (detailsString !== "") {
       var details = $("<div>");
       details.html(detailsString);
@@ -106,9 +112,9 @@ class Carousel extends Page {
       imageDetails.append(details);
     }
 
-    if (imageData.get("Description") !== undefined) {
+    if (work.get("Description") !== undefined) {
       var description = $("<div>");
-      description.html(imageData.get("Description"));
+      description.html(work.get("Description"));
       description.addClass("imageDescription");
       imageDetails.append(description);
     }

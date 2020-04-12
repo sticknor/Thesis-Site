@@ -27,8 +27,11 @@ class Site {
       case "Carousel":
         page = new Carousel(pageData);
         break;
-      case "Plain":
-        page = new Plain(pageData);
+      case "Bio":
+        page = new Bio(pageData);
+        break;
+      case "Statement":
+        page = new Statement(pageData);
         break;
       case "CV":
         page = new CV(pageData);
@@ -115,40 +118,33 @@ class Site {
     if (about.get("Bio Image") !== undefined) {
       bioImage = about.get("Bio Image")[0].url;
     }
-    let bioLink = about.get("Bio Link") || undefined;
-    let bioLinkTitle = about.get("Bio Link Title") || undefined;
-
-    let bioEmail = about.get("Bio Email") || undefined;
-    let bioEmailTitle = about.get("Bio Email Title") || undefined;
+    
+    let instagramLink = about.get("Instagram") || undefined;
+    let emailLink = about.get("Email") || undefined;
 
     let statement = about.get("Artist Statement") || undefined;
 
-    let socialMediaLink = about.get("Social Media Link") || undefined;
-    let socialMediaTitle = about.get("Social Media Link Title") || undefined;
-
     if (bio) {
       pages["about-bio"] = {
-        template: 'Plain',
+        template: 'Bio',
         category: "About",
         group: (statement || showCV) ? "Bio" : undefined,
         hash: "about-bio",
-        rows: [
-          { image: bioImage },
-          { text: bio }, 
-          { link: bioLink, linkTitle: bioLinkTitle }, 
-          { emailLink: bioEmail, linkTitle: bioEmailTitle }
-        ],
+        image: bioImage,
+        text: bio,
+        instagramLink: instagramLink,
+        emailLink: emailLink,
         order: Object.keys(pages).length,
       }
     }
 
     if (statement) {
       pages["about-statement"] = {
-        template: 'Plain',
+        template: 'Statement',
         category: "About",
         group: (bio || showCV) ? "Statement" : undefined,
         hash: "about-statement",
-        rows: [{ text: statement }],
+        text: statement,
         order: Object.keys(pages).length,
       }
     }

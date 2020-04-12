@@ -4,7 +4,7 @@ class CV extends Page {
     super(data);
   }
 
-  renderCVRow(rowData) {
+  renderRow(rowData) {
 
     var entry = $("<div class='entryCV'>");
 
@@ -63,14 +63,15 @@ class CV extends Page {
     var category = (rowData.get("Category"))[0].split(" ").join("");
     var sortedContainer = $("#about"+category);
     sortedContainer.append(entry);
-    
   }
 
   render() {
   	this.setupPage()
 
     var rows = this.data.rows;
-    console.log(rows)
+
+    var cvContainer = $("<div class='cvContainer'>");
+
   	for (var index in rows) {
 
   		var row = rows[index];
@@ -95,10 +96,11 @@ class CV extends Page {
           containerHeading.addClass("aboutContainerHeading");
         }
   			container.append(containerHeading);
-  			$("#page").append(container);
+  			cvContainer.append(container);
   		} 
 
-      this.renderCVRow(row);
+      $("#page").append(cvContainer);
+      this.renderRow(row);
   	}
   }
 }

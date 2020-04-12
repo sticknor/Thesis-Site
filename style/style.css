@@ -41,11 +41,6 @@ body{
 	display: block;
 }
 
-
-.aboutParagraph {
-	margin-bottom: 15px;
-}
-
 .aboutContainerHeading {
     margin-top: 20px;
     margin-bottom: 15px;
@@ -63,35 +58,47 @@ body{
   font-weight: bold;
 }
 
-
 .preDot::before {
   content: "\00a0\2022\00a0";
   color: rgb(200, 200, 200);
 }
 
+/* BIO STYLES */
 
-.aboutmultilineB {
-    margin-bottom: 15px;
+.bioContainer, .cvContainer, .statementContainer {
+  width: 90%;
+  margin: 0 5%;
 }
 
-.aboutmultilineA {
-    margin-bottom: 15px;
+.statementText, .bioText {
+  max-width: 800px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
-.sortedContainerHeading {
-	font-weight: bold;
+.bioRow {
+  margin-bottom: 30px;
 }
 
-.sortedContainer {
-	margin-bottom: 15px;
+.bioImage {
+  width: 50%;
+  margin-left: 0px;
+  min-width: 500px;
 }
 
-#fullImage {
+.bioLinksContainer {
+  flex-direction: column;
+}
+
+.fullImage {
 	object-fit: contain;
 	max-height: 100%;
 	max-width: 100%;
 	height: 100%;
 }
+
+
+/* CAROUSEL STYLES */
 
 .imageDetailsContainer {
     align-items: center;
@@ -117,25 +124,25 @@ body{
 	user-select: none;
 }
 
-.imageDetails, .splashSubText {
+.imageDetails {
   text-align: center;
   color: rgb(100, 100, 100);
   margin-top: 5px;
   width: 100%;
 }
 
-.imageDescription, .splashSubText {
+.imageDescription {
   color: rgb(100, 100, 100);
   margin-top: 5px;
   width: 100%;
   text-align: center;
 }
 
-.imageTitle, .splashText {
-    color: black;
-    text-align: center;
-    font-style: italic;
-    width: 100%;
+.imageTitle {
+  color: black;
+  text-align: center;
+  font-style: italic;
+  width: 100%;
 }
 
 #body{
@@ -182,8 +189,7 @@ body{
 	text-align: left;
 }
 
-
-.gridItem>img {
+.gridImage {
 	width: 100%;
 	margin-bottom: 5px;
 }
@@ -197,11 +203,6 @@ body{
 	display: none;
 }
 
-
-#mobileImage {
-
-}
-
 #menu {
 	flex: 1;
 	width: 100%;
@@ -211,18 +212,12 @@ body{
 	margin-left: 4%;
 }
 
-.textPlain {
-  text-align: left;
+.bioLink {
+  padding: 5px;
 }
 
-.entryPlain {
-  width: 100%;
-  margin-bottom: 5px;
-}
-
-.entryPlain > img{
-  width: 50%;
-  margin-bottom: 20px;
+.bioLink:hover {
+  opacity: 0.5;
 }
 
 .menuOption, .subOption {
@@ -275,7 +270,6 @@ body{
 	margin: 10px 0px;	
 	align-items: center;
 }
-
 
 .menuOption::before, .subOption::before {
 	content: "\2022";
@@ -360,15 +354,28 @@ body{
 }
 
 @media screen and (max-width: 850px) {
+  
   body {
     flex-direction: column;
     -webkit-overflow-scrolling: touch;
-	 overflow: initial;
+	  overflow: initial;
   }
 
-  .entryPlain > img{
+  .bioContainer, .cvContainer, .statementContainer {
     width: 100%;
-    margin-bottom: 20px;
+    margin: 0;
+  }
+
+  .bioRow {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bioImage {
+    width: 100%;
+    min-width: 0px;
   }
 
   #menuContainer {
@@ -388,32 +395,32 @@ body{
 
   }
 
-  #fullImage {
+ .fullImage {
   	height: initial;
   	width: 100%;
   }
 
   .gridItem {
-	width: 100%;
-	height: auto;
-	text-align: left;
-	margin-bottom: 30px;
-   }
+  	width: 100%;
+  	height: auto;
+  	text-align: left;
+  	margin-bottom: 30px;
+  }
 
-   .menuOption, .subOption {
+  .menuOption, .subOption {
    	padding: 5px 0px;
    	margin: 0px;
-   }
+  }
 
-   .menuOption.subOption {
+  .menuOption.subOption {
    	padding-bottom: 5px;
    	padding-top: 0px;
    	margin: 0px;
-   }
+  }
 
-   .homeMenuOption {
+  .homeMenuOption {
    	margin: 5px;
    	padding-bottom: 5px;
-   }
+  }
 }
 
