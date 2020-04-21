@@ -18,10 +18,6 @@ class Carousel extends Page {
       var gridItem = $("<div>");
       gridItem.addClass("gridItem");
 
-      // var thumbnailImage = $("<img class='thumbnailImage'>");
-      // thumbnailImage.attr("src", work.get("Image")[0].thumbnails.small.url);
-      // gridItem.append(thumbnailImage);
-
       var image = $("<img class='gridImage'>");
       image.attr("src", work.get("Image")[0].thumbnails.large.url);
       gridItem.append(image);
