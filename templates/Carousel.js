@@ -3,7 +3,7 @@ class Carousel extends Page {
 
   constructor(data) {
     super(data);
-    this.isThumbnailView = false;
+    this.isThumbnailView = this.data.rows.length > 1 ? true : false;
     this.index = 0;
   }
 
@@ -51,26 +51,66 @@ class Carousel extends Page {
   }
 
   renderThumbnailView() {
-    var thumbnailGrid = $("<div>");
-    thumbnailGrid.addClass("thumbnailGrid");
+
+    var grid = $("<div>");
+    grid.attr("id", "grid");
+    $("#page").append(grid);
 
     var rows = this.data.rows;
     for (var i in rows) {
       var work = rows[i];
+      var gridItem = $("<div>");
+      gridItem.addClass("gridItem");
+
+      var image = $("<img>");
+      image.attr("src", work.get("Work")[0].thumbnails.large.url);
+      image.addClass("gridImage");
 
       var thumbnailClick = function (event) { 
         this.setIndex(event.data.i); 
       }
-
-      var thumbnail = $("<img>");
-      thumbnail.attr("src", work.get("Work")[0].thumbnails.large.url);
-      thumbnail.addClass("thumbnail");
-      thumbnail.on("click", {i}, thumbnailClick.bind(this));
-
-      thumbnailGrid.append(thumbnail);
-    }
       
-    $("#page").append(thumbnailGrid);
+      image.load(function() {
+        console.log("Image loaded")
+        magicGrid.positionItems();
+      });
+      image.on("click", {i}, thumbnailClick.bind(this));
+
+      gridItem.append(image);
+      
+      $("#grid").append(gridItem);
+    }
+
+    let magicGrid = new MagicGrid({
+      container: "#grid", // Required. Can be a class, id, or an HTMLElement.
+      static: true, // Required for static content.
+      animate: false, // Optional.
+      gutter: 30,
+    });
+    magicGrid.listen();
+    magicGrid.positionItems();
+
+
+
+
+    // var thumbnailGrid = $("<div>");
+    // thumbnailGrid.addClass("thumbnailGrid");
+
+    // var rows = this.data.rows;
+    // for (var i in rows) {
+    //   var work = rows[i];
+
+
+
+    //   var thumbnail = $("<img>");
+    //   thumbnail.attr("src", work.get("Work")[0].thumbnails.large.url);
+    //   thumbnail.addClass("thumbnail");
+    //   thumbnail.on("click", {i}, thumbnailClick.bind(this));
+
+    //   thumbnailGrid.append(thumbnail);
+    // }
+      
+    $("#page").append(grid);
   }
 
   renderCarouselView() {
@@ -131,7 +171,7 @@ class Carousel extends Page {
       carouselControlsNext.attr("id", "carouselControlNext")
       carouselControlsNext.on("click", this.nextIndex.bind(this));
     var carouselControlsShowThumbnails = $("<div>");
-      carouselControlsShowThumbnails.html("Show Thumbnails");
+      carouselControlsShowThumbnails.html("Show All");
       carouselControlsShowThumbnails.attr("id", "carouselControlShowThumbnails");
       carouselControlsShowThumbnails.on("click", this.showThumbnails.bind(this));
       carouselControls.append(carouselControlsPrev);

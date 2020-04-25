@@ -194,15 +194,13 @@ body{
 .gridImage {
 	width: 100%;
 	margin-bottom: 5px;
+  cursor: pointer;
 }
+
 
 #grid {
 	width: 100%;
 	padding-bottom: 50px;
-}
-
-.grid {
-  margin-left: 5%;
 }
 
 #carouselControlsContainer {
