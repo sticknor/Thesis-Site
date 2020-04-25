@@ -1,22 +1,12 @@
-html {
-	height: 100%;
-}
+html { height: 100%; }
 
-i {
-	font-style: italic;
-}
+i { font-style: italic; }
 
-b {
-	font-weight: bold;
-}
+b { font-weight: bold; }
 
-img {
-	user-select: none;
-}
+img { user-select: none; }
 
-a{
-	color: #7b90ab;
-}
+a{ color: #7b90ab; }
 
 body{
 	text-align: left;
@@ -30,23 +20,30 @@ body{
 	overscroll-behavior: none;
 }
 
-.aboutContainer {
-    width: 90%;
-    text-align: left;
-    margin-bottom: 30px;
-    color: black;
+#body{
+  display: flex;
+  flex: 1;
+  height: 100%;
 }
 
-.line {
-	display: block;
+#mobilePage {
+  display: none;
 }
 
-.aboutContainerHeading {
-    margin-top: 20px;
-    margin-bottom: 15px;
-    font-size: 18px;
-    border-bottom: 1px solid rgb(200, 200, 200);
-    color: rgb(100, 100, 100);
+.preDot::before {
+  content: "\00a0\2022\00a0";
+  color: rgb(200, 200, 200);
+}
+
+
+/* ////////////////// CV STYLES ///////////////////// */
+
+.cvContainerHeading {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  border-bottom: 1px solid rgb(200, 200, 200);
+  color: rgb(100, 100, 100);
 }
 
 .entryCV {
@@ -78,7 +75,7 @@ body{
 }
 
 
-/* BIO STYLES */
+/* ////////////////// BIO + STATEMENT STYLES ///////////////////// */
 
 .bioContainer, .cvContainer, .statementContainer {
   width: 90%;
@@ -112,32 +109,27 @@ body{
 	height: 100%;
 }
 
-
-/* CAROUSEL STYLES */
+/* ////////////////// CAROUSEL STYLES ///////////////////// */
 
 .imageDetailsContainer {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    border-bottom: solid 1px rgb(200, 200, 200);
-    padding-bottom: 20px;
-    margin-top: 10px;
-    border-top: solid 1px rgb(200, 200, 200);
-    padding-top: 20px;
-    width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border-bottom: solid 1px rgb(200, 200, 200);
+  padding-bottom: 20px;
+  margin-top: 10px;
+  border-top: solid 1px rgb(200, 200, 200);
+  padding-top: 20px;
+  width: 100%;
 }
 
 .thumbnail {
-	padding: 0px 10px 10px 10px;
-	height: 200px;
-	cursor: pointer;
+  padding: 0px 10px 10px 10px;
+  height: 200px;
+  cursor: pointer;
 }
 
-.clickable {
-	cursor: pointer;
-	user-select: none;
-}
 
 .imageDetails {
   text-align: center;
@@ -160,12 +152,6 @@ body{
   width: 100%;
 }
 
-#body{
-	display: flex;
-	flex: 1;
-	height: 100%;
-}
-
 #menuContainer { 
 	display: flex;
 	position: sticky;
@@ -174,7 +160,6 @@ body{
 	flex: .25;
 	width: 300px;
 	padding: 30px;
-
 	justify-content: flex-start;
 	align-items: center;
 	overflow: scroll;
@@ -216,25 +201,67 @@ body{
 	padding-bottom: 50px;
 }
 
-#mobilePage {
-	display: none;
+.grid {
+  margin-left: 5%;
 }
+
+#carouselControlsContainer {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  margin-bottom: 10px;
+  color: black;
+  width: 100%
+}
+
+#carouselControlNext, #carouselControlPrev {
+  font-size: 24px;
+  font-height: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#carouselControlShowThumbnails {
+  cursor: pointer;
+  user-select: none;
+}
+
+#carouselControlNext:hover, #carouselControlPrev:hover, #carouselControlShowThumbnails:hover {
+  opacity: 0.7;
+}
+
+#carouselIndexDisplay {
+  margin: 0px 10px;
+  color: rgb(100, 100, 100);
+  user-select: none;
+  width: 70px;
+    text-align: center;
+}
+
+#carouselControls {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0px; 
+  align-items: center;
+}
+
+
+/* ////////////////// MENU STYLES ///////////////////// */
 
 #menu {
 	flex: 1;
 	width: 100%;
 }
 
-.grid {
-	margin-left: 4%;
-}
-
 .bioLink {
   padding: 5px;
+  cursor: pointer;
 }
 
 .bioLink:hover {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .menuOption, .subOption {
@@ -246,6 +273,12 @@ body{
 	font-size: 18px;
 	padding: 5px 0px;
 	width: 100%;
+  cursor: pointer;
+  user-select: none;
+}
+
+.menuOption:hover, .subOption:hover {
+  opacity: 0.7;
 }
 
 .homeMenuOption {
@@ -255,37 +288,6 @@ body{
 	margin-bottom: 20px;
 	width: 100%;
   padding-top: 0px !important;
-}
-
-#carouselControlsContainer {
-	display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: flex-end;
-  flex-direction: column;
-  margin-bottom: 10px;
-	color: black;
-  width: 100%
-}
-
-#carouselControlNext, #carouselControlPrev {
-	font-size: 24px;
-	font-height: 16px;
-}
-
-#carouselIndexDisplay {
-	margin: 0px 10px;
-	color: rgb(100, 100, 100);
-	user-select: none;
-  width: 70px;
-    text-align: center;
-}
-
-#carouselControls {
-	display: flex;
-	flex-direction: row;
-	margin: 10px 0px;	
-	align-items: center;
 }
 
 .menuOption::before, .subOption::before {
@@ -309,69 +311,16 @@ body{
 .menuOption.subOption {
 	font-size: 16px;
 	color: rgb(100, 100, 100);
-
 }
 
 .menuOption.collapsed > .subOption {
 	display: none;
 }
 
-
 .menuSelection::before, .menuSelection::after {
   opacity: 1;
 }
 
-
-.scrollIntroImage {
-    width: 100%;
-}
-
-.scrollIntroHeading {
-    font-size: 18px;
-    padding-bottom: 20px;
-    padding-top: 10px;
-    border-bottom: 1px solid rgb(200, 200, 200);;
-    margin-bottom: 20px;
-}
-
-.scrollBlockImage {
-    width: 100%;
-}
-
-.sortedContainerHeading {
-}
-
-.scrollintro {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.scrollBlock {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-
-.sortedContainer {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.scrollBlockVideo {
-    position: relative;
-    padding-bottom: 53.25%; /* 16:9 */
-    padding-top: 25px;
-    height: 0;
-    margin-bottom: 5px;
-}
-
-.scrollBlockVideo iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
 
 @media screen and (max-width: 850px) {
   

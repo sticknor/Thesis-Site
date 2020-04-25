@@ -89,11 +89,10 @@ class CV extends Page {
   		} else {
   			container = $("<div>");
   			container.attr("id", "about"+category);
-        container.addClass("aboutContainer")
   			var containerHeading = $("<div>");
   			containerHeading.html(row.get("Category")[0]);
         if (category) {
-          containerHeading.addClass("aboutContainerHeading");
+          containerHeading.addClass("cvContainerHeading");
         }
   			container.append(containerHeading);
   			cvContainer.append(container);
