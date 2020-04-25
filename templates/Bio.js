@@ -2,6 +2,9 @@ class Bio extends Page {
 
   constructor(data) {
     super(data);
+
+    this.bioImage = new Image();
+    this.bioImage.src = this.data.image;
   }
 
   render() {
