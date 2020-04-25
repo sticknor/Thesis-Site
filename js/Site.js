@@ -4,6 +4,7 @@ class Site {
     this.pages = {};
     this.menu = new Menu();
     this.airtable = new Airtable(this.onAirTableReady.bind(this));
+
     window.onpopstate = this.render.bind(this)
     $(window).resize(this.windowResized.bind(this));
   }
@@ -36,6 +37,9 @@ class Site {
       case "CV":
         page = new CV(pageData);
         break;
+      case "Splash":
+        page = new Splash(pageData);
+        break;
       default:
         console.log('Unexpected page template: ' + pageData.template)
         return;
@@ -61,11 +65,14 @@ class Site {
     $('#favicon').attr('href', faviconLink);
 
     // Add home page to the pages object
+
+    console.log(about.get("Splash Images"))
+    console.log(works[0].get("Work"))
     pages[""] = { 
-        template: 'Carousel',
+        template: 'Splash',
         category: name,
         hash: "",
-        rows: [],
+        rows: about.get("Splash Images") || works[0].get("Work"),
         order: 0
     }
 
@@ -83,9 +90,6 @@ class Site {
 
       // If show on website is unchecked => ignore work
       if (work.get("Show on Website") === undefined) continue;
-
-      // If add to home page is checked => add to Home page object
-      if (work.get("Add to Home Page") === true) { pages[""].rows.push(work); };
 
       // Build hash and title
       var hash = group === undefined ? category.split(' ').join('').toLowerCase() : (category+"-"+group).split(' ').join('').toLowerCase();

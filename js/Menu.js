@@ -95,7 +95,7 @@ class Menu {
       var pageData = orderedPages[page];
 
       if (this.options[pageData.category] === undefined) {
-        var pageHash = pageData.group === undefined? pageData.hash : pageData.category.toLowerCase();
+        var pageHash = pageData.group === undefined? pageData.hash : pageData.category.toLowerCase().split(" ").join("");
         this.options[pageData.category] = new MenuOption(pageData.category, pageHash, pageData.order);
       }
 

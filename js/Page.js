@@ -10,6 +10,7 @@ class Page {
     $("#page").unbind();
     // Remove various other divs added by the page templates
     $("#carouselControlsContainer").remove();
-    $("#splashDetailsContainer").remove();
+    $("#splashContainer").remove();
+    window.clearInterval(localStorage.getItem('splashInterval'));
   }
 }

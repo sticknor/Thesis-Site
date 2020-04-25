@@ -18,12 +18,8 @@ class Carousel extends Page {
       var gridItem = $("<div>");
       gridItem.addClass("gridItem");
 
-      // var thumbnailImage = $("<img class='thumbnailImage'>");
-      // thumbnailImage.attr("src", work.get("Image")[0].thumbnails.small.url);
-      // gridItem.append(thumbnailImage);
-
       var image = $("<img class='gridImage'>");
-      image.attr("src", work.get("Image")[0].thumbnails.large.url);
+      image.attr("src", work.get("Work")[0].thumbnails.large.url);
       gridItem.append(image);
       
       var imageDetails = $("<div>");
@@ -67,7 +63,7 @@ class Carousel extends Page {
       }
 
       var thumbnail = $("<img>");
-      thumbnail.attr("src", work.get("Image")[0].thumbnails.large.url);
+      thumbnail.attr("src", work.get("Work")[0].thumbnails.large.url);
       thumbnail.addClass("thumbnail");
       thumbnail.on("click", {i}, thumbnailClick.bind(this));
 
@@ -85,14 +81,17 @@ class Carousel extends Page {
 
     var work = this.data.rows[this.index];
 
-    // var thumbnailImage = $("<img class='thumbnailImage'>");
-    // thumbnailImage.attr("src", work.get("Image")[0].thumbnails.small.url);
-    // $("#page").append(thumbnailImage);
+    var workType = work.get("Work")[0].type.split("/")[0];
 
-    var image = $("<img class='fullImage'>");
-    image.attr("src", work.get("Image")[0].thumbnails.large.url); // TODO: Change the thing to load full over thumbnail
-    image.on("click", this.nextIndex.bind(this));
-    $("#page").append(image);
+
+    if (workType === "image") {
+      var image = $("<img class='fullImage'>");
+      image.attr("src", work.get("Work")[0].thumbnails.full.url);
+      image.on("click", this.nextIndex.bind(this));
+      $("#page").append(image);
+    } else if (workType === "video") {
+      console.log(workType);
+    }
 
     var imageDetails = $("<div>");
     imageDetails.addClass("imageDetailsContainer");

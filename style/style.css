@@ -63,6 +63,21 @@ body{
   color: rgb(200, 200, 200);
 }
 
+/* SPLASH STYLE */
+
+#splashContainer {
+  position: absolute;
+  background-color: pink;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  transition: background 1s linear;
+}
+
+
 /* BIO STYLES */
 
 .bioContainer, .cvContainer, .statementContainer {
@@ -164,18 +179,20 @@ body{
 	align-items: center;
 	overflow: scroll;
 	-webkit-overflow-scrolling: touch;
+
+  z-index: 100;
 }
 
 #page {
+  position: relative;
 	flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    padding: 30px 30px 30px 0px;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
-    margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 30px 30px 30px 30px;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .gridItem {
@@ -283,7 +300,10 @@ body{
 	margin-left: 8px;
 	opacity: 0;
 	color: rgb(200, 200, 200);
+}
 
+.homeMenuOption::before, .homeMenuOption::after{
+  content: "";
 }
 
 .menuOption.subOption {
@@ -359,6 +379,16 @@ body{
     flex-direction: column;
     -webkit-overflow-scrolling: touch;
 	  overflow: initial;
+  }
+
+  .splashMask {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
   }
 
   .bioContainer, .cvContainer, .statementContainer {
