@@ -83,7 +83,6 @@ class Carousel extends Page {
 
     var workType = work.get("Work")[0].type.split("/")[0];
 
-
     if (workType === "image") {
       var image = $("<img class='fullImage'>");
       image.attr("src", work.get("Work")[0].thumbnails.full.url);
@@ -125,18 +124,15 @@ class Carousel extends Page {
       carouselControls.attr("id", "carouselControls");
     var carouselControlsPrev = $("<div>");
       carouselControlsPrev.html("&#171;");
-      carouselControlsPrev.addClass("clickable");
       carouselControlsPrev.attr("id", "carouselControlPrev")
       carouselControlsPrev.on("click", this.prevIndex.bind(this));
     var carouselControlsNext = $("<div>");
       carouselControlsNext.html("&#187;");
-      carouselControlsNext.addClass("clickable");
       carouselControlsNext.attr("id", "carouselControlNext")
       carouselControlsNext.on("click", this.nextIndex.bind(this));
     var carouselControlsShowThumbnails = $("<div>");
       carouselControlsShowThumbnails.html("Show Thumbnails");
-      carouselControlsShowThumbnails.attr("id", "carouselControlShowThumbnails")
-      carouselControlsShowThumbnails.addClass("clickable");
+      carouselControlsShowThumbnails.attr("id", "carouselControlShowThumbnails");
       carouselControlsShowThumbnails.on("click", this.showThumbnails.bind(this));
       carouselControls.append(carouselControlsPrev);
       carouselControls.append(carouselIndexDisplay);
