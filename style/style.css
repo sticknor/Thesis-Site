@@ -71,7 +71,7 @@ body{
   right: 0;
   background-size: cover;
   background-position: 50% 50%;
-  transition: background 1s linear;
+  transition: background 1.5s linear;
 }
 
 
@@ -375,6 +375,10 @@ body{
  .fullImage {
   	height: initial;
   	width: 100%;
+  }
+
+  .gridImage {
+    cursor: initial;
   }
 
   .gridItem {

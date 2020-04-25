@@ -5,6 +5,18 @@ class Carousel extends Page {
     super(data);
     this.isThumbnailView = this.data.rows.length > 1 ? true : false;
     this.index = 0;
+
+    // preload images
+    this.images = new Array();
+    for (var i=0; i < this.data.rows.length; i++) {
+      if (this.data.rows[i].get("Work")) {
+        var workType = this.data.rows[i].get("Work")[0].type.split("/")[0];
+        if (workType === "image") {
+          this.images[i] = new Image();
+          this.images[i].src = this.data.rows[i].get("Work")[0].thumbnails.full.url;
+        }
+      }
+    }
   }
 
   renderMobileView() {
@@ -19,7 +31,7 @@ class Carousel extends Page {
       gridItem.addClass("gridItem");
 
       var image = $("<img class='gridImage'>");
-      image.attr("src", work.get("Work")[0].thumbnails.large.url);
+      image.attr("src", work.get("Work")[0].thumbnails.full.url);
       gridItem.append(image);
       
       var imageDetails = $("<div>");
@@ -63,7 +75,7 @@ class Carousel extends Page {
       gridItem.addClass("gridItem");
 
       var image = $("<img>");
-      image.attr("src", work.get("Work")[0].thumbnails.large.url);
+      image.attr("src", work.get("Work")[0].thumbnails.full.url);
       image.addClass("gridImage");
 
       var thumbnailClick = function (event) { 
