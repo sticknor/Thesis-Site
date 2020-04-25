@@ -89,26 +89,6 @@ class Carousel extends Page {
     });
     magicGrid.listen();
     magicGrid.positionItems();
-
-
-
-
-    // var thumbnailGrid = $("<div>");
-    // thumbnailGrid.addClass("thumbnailGrid");
-
-    // var rows = this.data.rows;
-    // for (var i in rows) {
-    //   var work = rows[i];
-
-
-
-    //   var thumbnail = $("<img>");
-    //   thumbnail.attr("src", work.get("Work")[0].thumbnails.large.url);
-    //   thumbnail.addClass("thumbnail");
-    //   thumbnail.on("click", {i}, thumbnailClick.bind(this));
-
-    //   thumbnailGrid.append(thumbnail);
-    // }
       
     $("#page").append(grid);
   }
@@ -213,8 +193,10 @@ class Carousel extends Page {
   }
 
   checkKey(e) {
-    if (e.keyCode === 37) { this.prevIndex() }
-    else if (e.keyCode === 39) { this.nextIndex() }
+    if (!this.isThumbnailView) {
+      if (e.keyCode === 37) { this.prevIndex() }
+      else if (e.keyCode === 39) { this.nextIndex() }
+    }
   }
 
   render() {
