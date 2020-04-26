@@ -158,7 +158,6 @@ body{
 	/* width of menu */
 	flex: .25;
 	width: 300px;
-  min-width: 250px;
 	padding: 30px;
 	justify-content: flex-start;
 	align-items: center;
