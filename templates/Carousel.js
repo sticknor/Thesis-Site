@@ -170,7 +170,7 @@ class Carousel extends Page {
       carouselControls.append(carouselIndexDisplay);
       carouselControls.append(carouselControlsNext);
     
-    carouselControlsContainer.append(imageDetails);
+    if ($(imageDetails).html() !== "") carouselControlsContainer.append(imageDetails);
 
     var rows = this.data.rows;
     if (rows.length > 1) {
