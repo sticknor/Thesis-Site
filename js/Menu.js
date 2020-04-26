@@ -7,6 +7,7 @@ class MenuSubOption {
 
   onClick() {
     window.location.hash = this.hash;
+    gtag('event', `${this.hash}_page_opened`);
   }
 
   render() {
@@ -43,6 +44,7 @@ class MenuOption {
   onClick() {
     if (this.suboptions.length === 0) {
       window.location.hash = this.hash;
+      gtag('event', `${this.hash}_page_opened`);
     }
     else { 
       this.toggle()
