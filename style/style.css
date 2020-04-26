@@ -1,22 +1,12 @@
-html {
-	height: 100%;
-}
+html { height: 100%; }
 
-i {
-	font-style: italic;
-}
+i { font-style: italic; }
 
-b {
-	font-weight: bold;
-}
+b { font-weight: bold; }
 
-img {
-	user-select: none;
-}
+img { user-select: none; }
 
-a{
-	color: #7b90ab;
-}
+a{ color: #7b90ab; }
 
 body{
 	text-align: left;
@@ -30,115 +20,164 @@ body{
 	overscroll-behavior: none;
 }
 
-.aboutContainer {
-    width: 90%;
-    text-align: left;
-    margin-bottom: 30px;
-    color: black;
+#body{
+  display: flex;
+  flex: 1;
+  height: 100%;
 }
 
-.line {
-	display: block;
+#mobilePage {
+  display: none;
+}
+
+.preDot::before {
+  content: "\00a0\2022\00a0";
+  color: rgb(200, 200, 200);
 }
 
 
-.aboutParagraph {
-	margin-bottom: 15px;
+/* ////////////////// CV STYLES ///////////////////// */
+
+.cvContainerHeading {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  border-bottom: 1px solid rgb(200, 200, 200);
+  color: rgb(100, 100, 100);
 }
 
-.aboutContainerHeading {
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    font-size: 18px;
-    border-bottom: 1px solid rgb(180, 180, 200);
+.entryCV {
+  margin-bottom: 15px;
 }
 
-.aboutmultilineB {
-    margin-bottom: 15px;
+.titleCV {
+  font-size: 16px;
+  font-weight: bold;
 }
 
-.aboutmultilineA {
-    margin-bottom: 15px;
+.preDot::before {
+  content: "\00a0\2022\00a0";
+  color: rgb(200, 200, 200);
 }
 
-.sortedContainerHeading {
-	font-weight: bold;
+/* SPLASH STYLE */
+
+#splashContainer {
+  position: absolute;
+  background-color: pink;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  transition: background 1.5s linear;
 }
 
-.sortedContainer {
-	margin-bottom: 15px;
+
+/* ////////////////// BIO + STATEMENT STYLES ///////////////////// */
+
+.bioContainer, .cvContainer, .statementContainer {
+  width: 90%;
+  margin: 0 5%;
 }
 
-#fullImage {
+.statementText, .bioText {
+  max-width: 800px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.bioRow {
+  margin-bottom: 30px;
+}
+
+.bioImage {
+  width: 50%;
+  margin-left: 0px;
+  min-width: 500px;
+}
+
+.bioLinksContainer {
+  flex-direction: column;
+}
+
+.fullImage {
 	object-fit: contain;
 	max-height: 100%;
 	max-width: 100%;
 	height: 100%;
 }
 
+/* ////////////////// CAROUSEL STYLES ///////////////////// */
+
 .imageDetailsContainer {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    border-bottom: solid 1px rgb(150, 150, 150);
-    padding-bottom: 20px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border-bottom: solid 1px rgb(200, 200, 200);
+  padding-bottom: 20px;
+  margin-top: 10px;
+  border-top: solid 1px rgb(200, 200, 200);
+  padding-top: 20px;
+  width: 100%;
 }
 
 .thumbnail {
-	padding: 0px 10px 10px 10px;
-	height: 200px;
-	cursor: pointer;
+  padding: 0px 10px 10px 10px;
+  height: 200px;
+  cursor: pointer;
 }
 
-.clickable {
-	cursor: pointer;
-	user-select: none;
+
+.imageDetails {
+  text-align: center;
+  color: rgb(100, 100, 100);
+  margin-top: 5px;
+  width: 100%;
 }
 
-.imageDetails, .splashSubText {
-    text-align: center;
-    color: rgb(150, 150, 150);
+.imageDescription {
+  color: rgb(100, 100, 100);
+  margin-top: 5px;
+  width: 100%;
+  text-align: center;
 }
 
-.imageTitle, .splashText {
-    color: black;
-    margin-bottom: 5px;
-    text-align: center;
-    /* font-weight: bold; */
-}
-
-#body{
-	display: flex;
-	flex: 1;
-	height: 100%;
+.imageTitle {
+  color: black;
+  text-align: center;
+  font-style: italic;
+  width: 100%;
 }
 
 #menuContainer { 
 	display: flex;
 	position: sticky;
-    flex-direction: column;
+  flex-direction: column;
 	/* width of menu */
-	flex: .2;
+	flex: .25;
 	width: 300px;
 	padding: 30px;
-
 	justify-content: flex-start;
 	align-items: center;
 	overflow: scroll;
 	-webkit-overflow-scrolling: touch;
+
+  z-index: 100;
 }
 
 #page {
+  position: relative;
 	flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    padding: 30px 30px 30px 0px;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
-    margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 30px 30px 30px 30px;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .gridItem {
@@ -148,39 +187,79 @@ body{
 	margin-bottom: 30px;
 }
 
-.gridItem .imageTitle, .gridItem .imageDetails {
+.gridItem .imageTitle, .gridItem .imageDetails, .imageDescription {
 	text-align: left;
 }
 
-
-.gridItem>img {
+.gridImage {
 	width: 100%;
 	margin-bottom: 5px;
+  cursor: pointer;
 }
+
 
 #grid {
 	width: 100%;
 	padding-bottom: 50px;
 }
 
-#mobilePage {
-	display: none;
+#carouselControlsContainer {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  margin-bottom: 10px;
+  color: black;
+  width: 100%
+}
+
+#carouselControlNext, #carouselControlPrev {
+  font-size: 24px;
+  font-height: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#carouselControlShowThumbnails {
+  cursor: pointer;
+  user-select: none;
+}
+
+#carouselControlNext:hover, #carouselControlPrev:hover, #carouselControlShowThumbnails:hover {
+  opacity: 0.7;
+}
+
+#carouselIndexDisplay {
+  margin: 0px 10px;
+  color: rgb(100, 100, 100);
+  user-select: none;
+  width: 70px;
+    text-align: center;
+}
+
+#carouselControls {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0px; 
+  align-items: center;
 }
 
 
-#mobileImage {
-
-}
+/* ////////////////// MENU STYLES ///////////////////// */
 
 #menu {
 	flex: 1;
 	width: 100%;
 }
 
+.bioLink {
+  padding: 5px;
+  cursor: pointer;
+}
 
-
-.grid {
-	margin-left: 4%;
+.bioLink:hover {
+  opacity: 0.7;
 }
 
 .menuOption, .subOption {
@@ -192,134 +271,88 @@ body{
 	font-size: 18px;
 	padding: 5px 0px;
 	width: 100%;
+  cursor: pointer;
+  user-select: none;
+}
+
+.menuOption:hover, .subOption:hover {
+  opacity: 0.7;
 }
 
 .homeMenuOption {
 	font-size: 18px;
-	border-bottom: 1px solid rgb(180, 180, 200);
+	border-bottom: 1px solid rgb(200, 200, 200);
 	padding-bottom: 20px;
 	margin-bottom: 20px;
 	width: 100%;
+  padding-top: 0px !important;
 }
-
-#carouselControlsContainer {
-	display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: flex-end;
-    flex-direction: column;
-    margin-bottom: 10px;
-	color: black;
-}
-
-#carouselControlNext, #carouselControlPrev {
-	font-size: 24px;
-	font-height: 16px;
-}
-
-#carouselIndexDisplay {
-	margin: 0px 10px;
-	opacity: 0.5;
-	user-select: none;
-  width: 70px;
-    text-align: center;
-}
-
-#carouselControls {
-	display: flex;
-	flex-direction: row;
-	margin: 10px 0px;	
-	align-items: center;
-}
-
 
 .menuOption::before, .subOption::before {
 	content: "\2022";
 	margin-right: 8px;
 	opacity: 0;
-	color: rgb(150, 150, 150);
+	color: rgb(200, 200, 200);
 }
 
 .menuOption::after, .subOption::after {
 	content: "\2022";
 	margin-left: 8px;
 	opacity: 0;
-	color: rgb(150, 150, 150);
+	color: rgb(200, 200, 200);
+}
 
+.homeMenuOption::before, .homeMenuOption::after{
+  content: "";
 }
 
 .menuOption.subOption {
 	font-size: 16px;
-	color: rgb(150, 150, 150);
-
+	color: rgb(100, 100, 100);
 }
 
 .menuOption.collapsed > .subOption {
 	display: none;
 }
 
-
 .menuSelection::before, .menuSelection::after {
   opacity: 1;
 }
 
 
-.scrollIntroImage {
-    width: 100%;
-}
-
-.scrollIntroHeading {
-    font-size: 18px;
-    padding-bottom: 20px;
-    padding-top: 10px;
-    border-bottom: 1px solid rgb(180, 180, 200);;
-    margin-bottom: 20px;
-}
-
-.scrollBlockImage {
-    width: 100%;
-}
-
-.sortedContainerHeading {
-}
-
-.scrollintro {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.scrollBlock {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-
-.sortedContainer {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.scrollBlockVideo {
-    position: relative;
-    padding-bottom: 53.25%; /* 16:9 */
-    padding-top: 25px;
-    height: 0;
-    margin-bottom: 5px;
-}
-
-.scrollBlockVideo iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
 @media screen and (max-width: 850px) {
+  
   body {
     flex-direction: column;
     -webkit-overflow-scrolling: touch;
-	overflow: initial;
+	  overflow: initial;
+  }
+
+  .splashMask {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+  }
+
+  .bioContainer, .cvContainer, .statementContainer {
+    width: 100%;
+    margin: 0;
+  }
+
+  .bioRow {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bioImage {
+    width: 100%;
+    min-width: 0px;
   }
 
   #menuContainer {
@@ -339,32 +372,36 @@ body{
 
   }
 
-  #fullImage {
+ .fullImage {
   	height: initial;
   	width: 100%;
   }
 
-  .gridItem {
-	width: 100%;
-	height: auto;
-	text-align: left;
-	margin-bottom: 30px;
-   }
+  .gridImage {
+    cursor: initial;
+  }
 
-   .menuOption, .subOption {
+  .gridItem {
+  	width: 100%;
+  	height: auto;
+  	text-align: left;
+  	margin-bottom: 30px;
+  }
+
+  .menuOption, .subOption {
    	padding: 5px 0px;
    	margin: 0px;
-   }
+  }
 
-   .menuOption.subOption {
+  .menuOption.subOption {
    	padding-bottom: 5px;
    	padding-top: 0px;
    	margin: 0px;
-   }
+  }
 
-   .homeMenuOption {
+  .homeMenuOption {
    	margin: 5px;
    	padding-bottom: 5px;
-   }
+  }
 }
 

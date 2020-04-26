@@ -1,40 +1,36 @@
 class Splash extends Page {
 
+  constructor(data) {
+    super(data);
+    this.index = 0;
+
+    // preload images
+    this.images = new Array();
+	for (var i=0; i < this.data.rows.length; i++) {
+		var workType = this.data.rows[i].type.split("/")[0];
+		console.log(workType)
+		if (workType === "image") {
+			this.images[i] = new Image();
+			this.images[i].src = this.data.rows[i].thumbnails.full.url;
+		}
+	}
+  }
+
   render() {
     this.setupPage()
 
-    var rows = this.subOptions[getCurrentHash()].rows;
-    var imageData = rows[0];
+    var splashContainer = $("<div id='splashContainer'>");
 
-    var image = $("<img>");
-    image.attr("src", imageData["imageurl"]);
-    image.attr("id", "fullImage");
-    
-    var imageDetails = $("<div>");
-    imageDetails.addClass("imageDetailsContainer");
-    imageDetails.attr("id", "splashDetailsContainer")
+    // Intial Image
+    splashContainer.css("background-image", "url(" + this.data.rows[this.index].thumbnails.full.url + ")");
 
-    if (imageData["title"] !== undefined) {
-      var title = $("<div>");
-      title.html(imageData["title"]);
-      title.addClass("imageTitle");
-      imageDetails.append(title);
-    }
+    // Interval to change image
+    localStorage.setItem('splashInterval', window.setInterval(() => {
+    	this.index < this.images.length - 1 ? this.index++ : this.index = 0;
+    	console.log(this.index);
+    	splashContainer.css("background-image", "url(" + this.images[this.index].src + ")");
+    }, 5000));
 
-    var detailsString = makeDetailsLine([imageData["medium"], imageData["dimensions"], imageData["year"]]);
-    if (detailsString !== "") {
-      var details = $("<div>");
-      details.html(detailsString);
-      details.addClass("imageDetails");
-      imageDetails.append(details);
-    }
-
-    $("#page").append(image);
-
-    if (window.innerWidth > 850) {
-      $("#menuContainer").append(imageDetails);
-    } else {
-      $("#page").append(imageDetails);
-    }
+    $("#page").append(splashContainer);
   }
 }
