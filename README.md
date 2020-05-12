@@ -29,7 +29,10 @@ Click the 'Fork' button in the top right corner of this project page. Then, sele
 * Your Base ID can be found on the Airtable site: "To obtain the ID of your AirTable base, open the AirTable Standard API page and click on the AirTable base that you want to use. This will open the API page of the base. The base ID can be found in the URL of the API page of the base."
 * In Airtable, invite portfoliosite@gmail.com as a read-only collaborator. That account's API key in already located in `CONFIG.js`. Optionally, you can also add your own API key, but it will be more secure to use a read-only API key. 
 
-### 4. Update Portfolio Site 
+### 4. Host Portfolio Site
+If you're using GitHub, I recommend deploying your site with GitHub pages (free hosting!). You can configure custom domains.
+
+### 5. Update Portfolio Site 
 If you've successfully set up your site, then the most technical portion is behind you. Now - you can easily change the site content, by changing the values in the spreadsheet. 
 There are 3 sheets: About, Works, and CV. Each of these sheets serves a specific purpose. In any sheet, column names should not be altered. Use the guide below to learn how to use these spreadsheets. 
 
