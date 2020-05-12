@@ -34,7 +34,7 @@ If you've successfully set up your site, then the most technical portion is behi
 There are 3 sheets: About, Works, and CV. Each of these sheets serves a specific purpose. In any sheet, column names should not be altered. Use the guide below to learn how to use these spreadsheets. 
 
 #### About
-The about helps you setup the basics of your site. Includes optional Bio and Statement.  
+The about helps you setup the basics of your site. Includes optional Bio and Statement. Include a slideshow on your homepage by adding images to Splash Images cell. 
 
 #### Works
 Adds images and work info to your site. The menu is generated from the groups and categories specified on this page.
