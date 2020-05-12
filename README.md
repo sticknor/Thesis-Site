@@ -18,11 +18,11 @@ Having some knowledge of web programming can be helpful for customizing your sit
 
 ## Get Started
 
-#### 1. Duplicate the Airtable base
+### 1. Duplicate the Airtable base
 Your Airtable base (a collection of spreadsheets) will contain the site plan for your website. Menus and content will be generated from this plan.
 Duplicate [this starter base](https://airtable.com/shrqxhD3GnjQlmyZY) into your own Airtable account
 
-#### 2. Duplicate the Code 
+### 2. Duplicate the Code 
 Click the 'Fork' button in the top right corner of this project page. Then, select the GitHub account where you will keep the repo for your portfolio site.
 
 ### 3. Add your Airtable Stuff To `CONFIG.js`
