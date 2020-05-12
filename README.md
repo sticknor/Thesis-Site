@@ -30,7 +30,7 @@ Click the 'Fork' button in the top right corner of this project page. Then, sele
 * In Airtable, invite portfoliosite@gmail.com as a read-only collaborator. That account's API key in already located in `CONFIG.js`. Optionally, you can also add your own API key, but it will be more secure to use a read-only API key. 
 
 ### 4. Host Portfolio Site
-If you're using GitHub, I recommend deploying your site with GitHub pages (free hosting!). You can configure custom domains.
+If you're using GitHub, I recommend deploying your site with GitHub pages (free hosting!). You can also configure a Github Pages site to use any custom domains that you own. 
 
 ### 5. Update Portfolio Site 
 If you've successfully set up your site, then the most technical portion is behind you. Now - you can easily change the site content, by changing the values in the spreadsheet. 
