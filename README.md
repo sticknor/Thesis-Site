@@ -25,6 +25,8 @@ Duplicate [this starter base](https://airtable.com/shrqxhD3GnjQlmyZY) into your 
 ### 2. Duplicate the Code 
 Click the 'Fork' button in the top right corner of this project page. Then, select the GitHub account where you will keep the repo for your portfolio site.
 
+### 2a. Delete the CNAME File Completely 
+
 ### 3. Add your Airtable Stuff To `CONFIG.js`
 * Your Base ID can be found on the Airtable site: "To obtain the ID of your AirTable base, open the AirTable Standard API page and click on the AirTable base that you want to use. This will open the API page of the base. The base ID can be found in the URL of the API page of the base."
 * In Airtable, invite PortfolioSiteReader@gmail.com as a read-only collaborator. That account's API key in already located in `CONFIG.js`. Optionally, you can also add your own API key, but it will be more secure to use a read-only API key. 
