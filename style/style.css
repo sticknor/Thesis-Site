@@ -66,7 +66,7 @@ body{
   position: absolute;
   top: 30px;
   bottom: 30px;
-  left: 30px;
+  left: 0px;
   right: 30px;
   background-size: cover;
   background-position: 50% 50%;
@@ -327,6 +327,11 @@ body{
     -webkit-overflow-scrolling: touch;
 	  overflow: initial;
   }
+	
+#splashContainer {
+  left: 30px;
+}
+
 
   .splashMask {
     position: absolute;
