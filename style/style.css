@@ -64,10 +64,11 @@ body{
 
 #splashContainer {
   position: absolute;
-  top: 30px;
-  bottom: 30px;
-  left: 0px;
-  right: 30px;
+  background-color: pink;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-size: cover;
   background-position: 50% 50%;
   transition: background 1.5s linear;
@@ -155,11 +156,12 @@ body{
 	display: flex;
 	position: sticky;
   flex-direction: column;
+  min-width: 200px;
+  max-width: 200px
 	/* width of menu */
 	flex: .25;
 	width: 300px;
-  min-width: 250px;
-	padding: 30px;
+	margin: 30px;
 	justify-content: flex-start;
 	align-items: center;
 	overflow: scroll;
@@ -175,7 +177,7 @@ body{
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  padding: 30px 30px 30px 30px;
+  padding: 50px 50px 50px 0px;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
 }
@@ -249,8 +251,9 @@ body{
 /* ////////////////// MENU STYLES ///////////////////// */
 
 #menu {
-	flex: 1;
-	width: 100%;
+	padding: 30px;
+  background: white;
+  width: 300px;
 }
 
 .bioLink {
@@ -320,19 +323,13 @@ body{
 }
 
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 1100px) {
   
   body {
     flex-direction: column;
     -webkit-overflow-scrolling: touch;
 	  overflow: initial;
   }
-	
-#splashContainer {
-  left: 30px;
-	top: 0px;
-}
-
 
   .splashMask {
     position: absolute;
@@ -363,14 +360,19 @@ body{
 
   #menuContainer {
   	display: block;
-  	width: 90%;
-  	padding: 5%;
+  	width: 100%;
   	overflow: initial;
+    margin: 0px;
+  }
+
+  #menu {
+    width: 40%;
+    margin: auto;
   }
 
   #page {
   	overflow: initial;
-    padding: 5%;
+    padding: 3%;
     padding-bottom: 30px;
     padding-top: 0px;
     height: 100%;
