@@ -8,6 +8,13 @@ img { user-select: none; }
 
 a{ color: #7b90ab; }
 
+::-webkit-scrollbar {
+    display: none !important;
+     width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+
 body{
 	text-align: left;
 	font-size: 16px;
