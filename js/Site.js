@@ -28,6 +28,9 @@ class Site {
       case "Carousel":
         page = new Carousel(pageData);
         break;
+      case "Scroll":
+        page = new Scroll(pageData);
+        break;
       case "Bio":
         page = new Bio(pageData);
         break;
@@ -100,7 +103,7 @@ class Site {
 
         // Create the page
         pages[hash] = {
-          template: 'Carousel',
+          template: 'Scroll',
           hash: hash,
           rows: [work], // Add the work to the page
           category,
