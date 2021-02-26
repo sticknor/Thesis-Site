@@ -61,19 +61,17 @@ class Scroll extends Page {
 
   sizeImages() {
     for (var i in this.data.rows) {
-        const sizeSteps = [35, 45, 51, 70, 100, 100];
+        const sizeSteps = [45, 60, 80, 100, 100];
         var item = $(`#gridItem${i}`);
         var work = this.data.rows[i];
         var displaySize = work.get("Display Size");
-        console.log(displaySize);
         var width = work.get("Width");
         var widthPercentage;
 
-        if (displaySize === "Xsmall")  widthPercentage = sizeSteps[0];
-        else if (displaySize === "Small")  widthPercentage = sizeSteps[1];
-        else if (displaySize === "Medium")  widthPercentage = sizeSteps[2];
-        else if (displaySize === "Large")  widthPercentage = sizeSteps[3];
-        else if (displaySize === "Xlarge")  widthPercentage = sizeSteps[4];
+        if (displaySize === "Small")  widthPercentage = sizeSteps[0];
+        else if (displaySize === "Medium")  widthPercentage = sizeSteps[1];
+        else if (displaySize === "Large")  widthPercentage = sizeSteps[2];
+        else if (displaySize === "Xlarge")  widthPercentage = sizeSteps[3];
         else {
             widthPercentage = width ? (width / this.largestWidth) * 100 : 100;
             for (var i = 0; i < sizeSteps.length - 1; i++) {
