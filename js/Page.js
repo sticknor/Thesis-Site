@@ -8,6 +8,7 @@ class Page {
     // Clear the page
     $("#page").empty();
     $("#page").unbind();
+    window.scrollTo({x: 0, y: 0});
     // Remove various other divs added by the page templates
     $("#carouselControlsContainer").remove();
     $("#splashContainer").remove();

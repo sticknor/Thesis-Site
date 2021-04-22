@@ -7,12 +7,13 @@ function getCurrentPage() {
 }
 
 function makeDetailsLine(details) {
+  var spacer = " &#183; ";
   var detailsLine = "";
   for (var i=0; i<details.length; i++) {
     if (details[i] !== undefined && details[i] !== "<b>undefined</b>" && details[i] !== "<i>undefined</i>") {
-      detailsLine+=details[i]+" &#8226; "
+      detailsLine+=details[i]+spacer
     }
   }
-	return detailsLine.substring(0, detailsLine.length-9);
+	return detailsLine.substring(0, detailsLine.length-spacer.length);
 }
 

@@ -8,6 +8,13 @@ img { user-select: none; }
 
 a{ color: #7b90ab; }
 
+::-webkit-scrollbar {
+    display: none !important;
+     width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+
 body{
 	text-align: left;
 	font-size: 16px;
@@ -31,8 +38,7 @@ body{
 }
 
 .preDot::before {
-  content: "\00a0\2022\00a0";
-  color: rgb(200, 200, 200);
+  content: "\00a0\00B7\00a0";
 }
 
 
@@ -56,8 +62,7 @@ body{
 }
 
 .preDot::before {
-  content: "\00a0\2022\00a0";
-  color: rgb(200, 200, 200);
+  content: "\00a0\00B7\00a0";
 }
 
 /* SPLASH STYLE */
@@ -132,9 +137,8 @@ body{
 
 
 .imageDetails {
-  text-align: center;
+  text-align: left;
   color: rgb(100, 100, 100);
-  margin-top: 5px;
   width: 100%;
 }
 
@@ -156,17 +160,13 @@ body{
 	display: flex;
 	position: sticky;
   flex-direction: column;
-  min-width: 200px;
-  max-width: 200px
 	/* width of menu */
-	flex: .25;
 	width: 300px;
 	margin: 30px;
 	justify-content: flex-start;
 	align-items: center;
 	overflow: scroll;
 	-webkit-overflow-scrolling: touch;
-
   z-index: 100;
 }
 
@@ -183,26 +183,37 @@ body{
 }
 
 .gridItem {
-	width: 45%;
-	height: auto;
-	text-align: left;
-	margin-bottom: 30px;
-}
-
-.gridItem .imageTitle, .gridItem .imageDetails, .imageDescription {
-	text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
 }
 
 .gridImage {
-	width: 100%;
-	margin-bottom: 5px;
-  cursor: pointer;
+  object-fit: contain;
+  margin-bottom: 15px;
+  width: 100%;
 }
 
+.gridItem .imageTitle {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.gridItem .imageDetails {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 100;
+}
 
 #grid {
 	width: 100%;
-	padding-bottom: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #carouselControlsContainer {
@@ -218,7 +229,7 @@ body{
 
 #carouselControlNext, #carouselControlPrev {
   font-size: 24px;
-  font-height: 16px;
+  line-height: 16px;
   cursor: pointer;
   user-select: none;
 }
@@ -237,7 +248,7 @@ body{
   color: rgb(100, 100, 100);
   user-select: none;
   width: 70px;
-    text-align: center;
+  text-align: center;
 }
 
 #carouselControls {
@@ -292,14 +303,14 @@ body{
 }
 
 .menuOption::before, .subOption::before {
-	content: "\2022";
+	content: "\00B7";
 	margin-right: 8px;
 	opacity: 0;
 	color: rgb(200, 200, 200);
 }
 
 .menuOption::after, .subOption::after {
-	content: "\2022";
+	content: "\00B7";
 	margin-left: 8px;
 	opacity: 0;
 	color: rgb(200, 200, 200);
@@ -334,9 +345,9 @@ body{
   .splashMask {
     position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
+    height: 100vh;
     background: rgb(255,255,255);
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
   }
@@ -366,7 +377,6 @@ body{
   }
 
   #menu {
-    width: 40%;
     margin: auto;
   }
 
@@ -377,7 +387,6 @@ body{
     padding-top: 0px;
     height: 100%;
     display: block;
-
   }
 
  .fullImage {
@@ -390,10 +399,7 @@ body{
   }
 
   .gridItem {
-  	width: 100%;
-  	height: auto;
-  	text-align: left;
-  	margin-bottom: 30px;
+  	margin-bottom: 50px;
   }
 
   .menuOption, .subOption {
