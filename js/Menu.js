@@ -117,6 +117,13 @@ class Menu {
     $("#menu").unbind();
     $("#menu").on("click", this.onClick.bind(this));
 
+    // Add Special Link
+    var specialLink = $("<a>");
+    specialLink.html('Rhapsody');
+    specialLink.addClass("menuOption subOption clickable");
+    specialLink.attr("href", "/rhapsody");
+    $("#menu").append(specialLink);
+
     for (var index in this.options) {
       this.options[index].render()
     }
