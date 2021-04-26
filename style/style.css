@@ -419,3 +419,27 @@ body{
   }
 }
 
+
+
+/* ///////////// Exhibit //////////////*/
+
+
+.exhibit_title img, .exhibit_header img {
+  width: 100%;
+}
+
+.exhibit_workForSale {
+  width: 80vw;
+}
+
+.exhibit_workForSale img {
+  width: 80px;
+}
+
+.exhibit_page {
+  width: 80vh;
+  max-width: 80vh;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+}

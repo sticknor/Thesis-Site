@@ -1,4 +1,4 @@
-class Exhbit extends Page {
+class Exhibit extends Page {
 
     constructor(data) {
       super(data);
@@ -19,9 +19,14 @@ class Exhbit extends Page {
         // Put in image header w/ alt text
         var header = $("<table id='exhibit_header'>");
 
+        var titleImage = $(`<tr class='exhibit_title'><td><img src='${this.data.get('Title Image')[0].url}' alt='${this.data.get('Title')}'/><td/></tr>`);
+        header.append(titleImage);
+        var headerImage = $(`<tr class='exhibit_header'><td><img src='${this.data.get('Header Image')[0].url}' /><td/></tr>`);
+        header.append(headerImage);
+
         // Put in "menu"
         var menu = $("<tr id='exhibit_menu'>");
-        var priceListLink=$("<td><a href='#exhibit_priceList'>Price List</a></td>");
+        var priceListLink=$("<td><a href='#pricelist'>Price List</a></td>");
         var statementLink=$("<td><a href='#exhibit_statement'>Statement</a></td>");
         var bioLink=$("<td><a href='#exhibit_bio'>Bio</a></td>");
         var linksLink=$("<td><a href='#exhibit_links'>Price List</a></td>");
@@ -33,22 +38,37 @@ class Exhbit extends Page {
         header.append(menu);
 
         // Put in Price List
-        var priceList = $("<table id='exhibit_priceList'>");
-        for (var work in []) {
+        console.log(this.data);
+        var priceList = $("<table id='pricelist'>");
+
+        for (var i = 0; i < this.data.get("Price List").length; i++) {
             var workForSale = $("<tr class='exhibit_workForSale'>");
 
             var workImage = $("<td>");
-            workImage.html('<img />');
+            workImage.html(`<img src="${this.data.get("Work (from Price List)")[i].url}"/>`);
 
             var workInformation = $("<td>");
-            workInformation.html('<img />');
+            var workTitle = $("<div>");
+            workTitle.html(`<div>${this.data.get("Title (from Price List)")[i]}</div>`);
+            var workYear = $("<div>");
+            workYear.html(`<div>${this.data.get("Year (from Price List)")[i]}</div>`);
+            var workDimensions = $("<div>");
+            workDimensions.html(`<div>${this.data.get("Width (from Price List)")[i]}" x ${this.data.get("Height (from Price List)")[i]}"</div>`);
+            workInformation.append(workTitle);
+            workInformation.append(workDimensions);
+            workInformation.append(workYear);
 
-            var workPrice = $("<td>");
-            workPrice.html('$500');
+            var workPrice = $("<div>");
+            if (this.data.get("Sold (from Price List)")[i] === true) {
+                workPrice.html(`<div><div style="text-decoration: line-through;">$${this.data.get("Price (from Price List)")[i]}</div><div style="color:#FF69B4;">sold</div></div>`);
+            } else {
+                workPrice.html(`<div>$${this.data.get("Price (from Price List)")[i]}</div>`);
+            }
+            workInformation.append(workPrice);
+            
 
             workForSale.append(workImage);
             workForSale.append(workInformation);
-            workForSale.append(workPrice);
 
             priceList.append(workForSale);
         }
@@ -62,7 +82,8 @@ class Exhbit extends Page {
         // Put in Links
         var links = $("<div id='exhibit_links'>");
 
-      $("#body").style("scroll-behavior", "smooth");
+      // $("#body").style("scroll-behavior", "smooth");
+      $("#body").addClass("exhibit_page");
       $("#body").append(header);
       $("#body").append(priceList);
       $("#body").append(statement);
