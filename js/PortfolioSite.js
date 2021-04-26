@@ -1,9 +1,9 @@
-class Site {
+class PortfolioSite {
 
   constructor() {
     this.pages = {};
     this.menu = new Menu();
-    this.airtable = new Airtable(this.onAirTableReady.bind(this));
+    this.airtable = new Airtable(["Works", "CV", "About"], this.onAirTableReady.bind(this));
 
     window.onpopstate = this.render.bind(this)
     $(window).resize(this.windowResized.bind(this));
@@ -51,14 +51,18 @@ class Site {
     return page;
   }
 
-  onAirTableReady(works, cv, about) {
+  onAirTableReady(data) {
+    const works = data["Works"]
+    const cv = data["CV"]
+    const about = data["About"][0]
+    console.log(about)
+
     var pages = {};
 
     /////////////// READ ABOUT TABLE /////////////////
 
     // Set up home page object and site details from the 'About' table
     // Name of Site - Also "Home Button"
-    about = about[0]
     let name = about.get("Title") || "Portfolio";
     document.title = name;
 
@@ -175,5 +179,3 @@ class Site {
     this.menu.createMenu(pages);
   }
 }
-
-var site = new Site();
