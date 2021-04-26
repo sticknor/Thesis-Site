@@ -2,37 +2,25 @@
 
 class Airtable {
 
-  constructor(onTableReady=undefined) {
-
+  constructor(tabs, onTableReady=undefined) {
+    this.tabs = tabs;
     this.tabsFetched = 0;
     this.onTableReady = onTableReady;
 
-    this.Works = [];
-    this.CV = [];
-    this.About = {};
+    this.data = {};
 
     this.apiKey = AIRTABLE_API;
     this.baseId = AIRTABLE_BASE_ID;
     this.Airtable = require('airtable');
     this.base = new this.Airtable({ apiKey: this.apiKey }).base(this.baseId);
 
-    this.fetchTable("Works", (result) => { 
-      this.Works = result;
-      this.tabsFetched++;
-      if (this.tabsFetched === 3) { this.allTabsReady() }
-    });
-    
-    this.fetchTable("CV", (result) => { 
-      this.CV = result;
-      this.tabsFetched++;
-      if (this.tabsFetched === 3) { this.allTabsReady() }
-    });
-
-    this.fetchTable("About", (result) => { 
-      this.About = result;
-      this.tabsFetched++;
-      if (this.tabsFetched === 3) { this.allTabsReady() }
-    });
+    for(var i=0; i < this.tabs.length; i++){
+      const tab = tabs[i]
+      this.fetchTable(tab, (result) => { 
+        this.data[tab] = result;
+        this.tabReady()
+      });
+    }
   }
 
   fetchTable(tableName, callback) {
@@ -48,10 +36,10 @@ class Airtable {
     });
   }
 
-  allTabsReady() {
-    console.log(this.Works)
-    console.log(this.CV);
-    console.log(this.About)
-    this.onTableReady(this.Works, this.CV, this.About);
+  tabReady() {
+    this.tabsFetched++;
+    if (this.tabsFetched === this.tabs.length) {
+      this.onTableReady(this.data);
+    }
   }
 }
