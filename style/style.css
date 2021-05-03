@@ -440,6 +440,7 @@ html {
   display: flex;
   align-items: center;
   flex-direction: column;
+  color: #555;
 }
 
 
@@ -533,6 +534,8 @@ html {
 
 .exhibit_links {
   display: flex;
+  font-size: larger;
+  line-height: 1.6;
   flex-direction: column;
   /* justify-content: center; */
   text-align: center;
@@ -545,8 +548,7 @@ html {
   flex-direction: column;
   width: 90vw;
   max-width: 600px;
-  font-size: larger;
-  padding-top: 75px;
+  padding-top: 55px;
 }
 
 .exhibit_hours > div {
@@ -559,5 +561,11 @@ html {
 
 .exhibit_hours > div > div:first-child {
   font-weight: bold;
+  padding-bottom: 5px;
+  font-size: larger;
   text-decoration: underline;
+}
+
+#pricelist {
+  padding-top: 55px;;
 }
