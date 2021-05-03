@@ -72,9 +72,6 @@ class PortfolioSite {
     $('#favicon').attr('href', faviconLink);
 
     // Add home page to the pages object
-
-    console.log(about.get("Splash Images"))
-    console.log(works[0].get("Work"))
     pages[""] = { 
         template: 'Splash',
         category: name,

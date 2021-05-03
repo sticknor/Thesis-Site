@@ -6,14 +6,6 @@ class ExhibitSite {
     this.airtable = new Airtable(["Exhibits"], this.onAirTableReady.bind(this));
 
     window.onpopstate = this.render.bind(this)
-    $(window).resize(this.windowResized.bind(this));
-  }
-
-  windowResized() {
-    // only re render if width of window was changed
-    if (this.width !== $(window).width()) {
-      this.render();
-    }
   }
 
   render() {
@@ -28,6 +20,7 @@ class ExhibitSite {
       console.log(this.exhibitName)
       if(exhibit.get("Title") == this.exhibitName){
         this.page = new Exhibit(exhibit);
+        this.page.render();
         break;
       }
     }
