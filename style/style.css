@@ -539,3 +539,25 @@ html {
   justify-content: space-around;
   padding-bottom: 75px;
 }
+
+.exhibit_hours {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  max-width: 600px;
+  font-size: larger;
+  padding-top: 75px;
+}
+
+.exhibit_hours > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.exhibit_hours > div > div:first-child {
+  font-weight: bold;
+  text-decoration: underline;
+}
