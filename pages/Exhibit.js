@@ -16,9 +16,11 @@ class Exhibit extends Page {
     }
   
     render() {
+        $("#body").html('');
+        console.log(this.data);
+
         // Put in image header w/ alt text
         var header = $("<div id='exhibit_header'>");
-
         var titleImage = $(`<img src='${this.data.get('Title Image')[0].url}' alt='${this.data.get('Title')}'/>`);
         header.append(titleImage);
         var headerImage = $(`<img src='${this.data.get('Header Image')[0].url}' />`);
@@ -29,7 +31,7 @@ class Exhibit extends Page {
         var priceListLink=$("<div><a href='#pricelist'>Price List</a></div>");
         var statementLink=$("<div><a href='#exhibit_statement'>Statement</a></div>");
         var bioLink=$("<div><a href='#exhibit_bio'>Bio</a></div>");
-        var linksLink=$("<div><a href='#exhibit_links'>Price List</a></div>");
+        var linksLink=$("<div><a href='#exhibit_links'>Links</a></div>");
 
         menu.append(priceListLink);
         menu.append(statementLink);
@@ -38,8 +40,7 @@ class Exhibit extends Page {
         header.append(menu);
 
         // Put in Price List
-        console.log(this.data);
-        var priceList = $("<div id='pricelist'>");
+        var priceList = $("<div id='pricelist' class='exhibit_sectionHeader'></div>");
 
         for (var i = 0; i < this.data.get("Price List").length; i++) {
 
@@ -58,20 +59,32 @@ class Exhibit extends Page {
         }
 
         // Put in Statement
-        var statement = $("<div id='exhibit_statement'>");
+        var statement = $("<div id='exhibit_statement' class='exhibit_sectionHeader'>");
+        var statementText = $("<div class='exhibit_text'>");
+        statementText.html(this.data.get("Statement"));
+        statement.append(statementText);
 
         // Put in Statement
-        var bio = $("<div id='exhibit_bio'>");
+        var bio = $("<div id='exhibit_bio'  class='exhibit_sectionHeader'>");
+        var bioText = $("<div class='exhibit_text'>");
+        bioText.html(this.data.get("Bio"));
+        bio.append(bioText);
 
         // Put in Links
-        var links = $("<div id='exhibit_links'>");
+        var linksHeader = $("<div id='exhibit_links' class='exhibit_sectionHeader'>");
+        var compiledTemplate = Handlebars.getTemplate('links');
+        var links = compiledTemplate();  
+
 
       // $("#body").style("scroll-behavior", "smooth");
       $("#body").addClass("exhibit_page");
       $("#body").append(header);
       $("#body").append(priceList);
       $("#body").append(statement);
+      $("#body").append($('<div class="exhibit_priceListItemBorder"></div>'));
       $("#body").append(bio);
+      $("#body").append($('<div class="exhibit_priceListItemBorder"></div>'));
+      $("#body").append(linksHeader);
       $("#body").append(links);
     }
   }
