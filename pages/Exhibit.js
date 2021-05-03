@@ -17,7 +17,6 @@ class Exhibit extends Page {
   
     render() {
         $("#body").html('');
-        console.log(this.data);
 
         // Put in image header w/ alt text
         var header = $("<div id='exhibit_header'>");
@@ -38,6 +37,10 @@ class Exhibit extends Page {
         menu.append(bioLink);
         menu.append(linksLink);
         header.append(menu);
+
+        // Put in Hours
+        var compiledInfoTemplate = Handlebars.getTemplate('hours');
+        var hours = compiledInfoTemplate(); 
 
         // Put in Price List
         var priceList = $("<div id='pricelist' class='exhibit_sectionHeader'></div>");
@@ -79,6 +82,7 @@ class Exhibit extends Page {
       // $("#body").style("scroll-behavior", "smooth");
       $("#body").addClass("exhibit_page");
       $("#body").append(header);
+      $("#body").append(hours);
       $("#body").append(priceList);
       $("#body").append(statement);
       $("#body").append($('<div class="exhibit_priceListItemBorder"></div>'));
