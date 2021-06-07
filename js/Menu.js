@@ -122,10 +122,10 @@ class Menu {
     }
 
     // Add Special Link
-    var specialLink = $("<a>");
-    specialLink.html('Rhapsody');
-    specialLink.addClass("menuOption subOption specialOption clickable");
-    specialLink.attr("href", "https://samt.work/rhapsody");
-    $("#menu").append(specialLink);
+    // var specialLink = $("<a>");
+    // specialLink.html('Rhapsody');
+    // specialLink.addClass("menuOption subOption specialOption clickable");
+    // specialLink.attr("href", "https://samt.work/rhapsody");
+    // $("#menu").append(specialLink);
   }
 }
