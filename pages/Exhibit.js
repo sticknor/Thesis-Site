@@ -54,7 +54,7 @@ class Exhibit extends Page {
             dimensions: `${this.data.get("Width (from Price List)")[i]}" x ${this.data.get("Height (from Price List)")[i]}"`,
             materials: this.data.get("Medium (from Price List)")[i],
             year: this.data.get("Year (from Price List)")[i].title,
-            price: this.data.get("Price (from Price List)")[i],
+            price: this.data.get("Price (from Price List)") ? this.data.get("Price (from Price List)")[i] : 'price available upon request',
             sold: this.data.get("Sold (from Price List)")[i]
           });  
 
