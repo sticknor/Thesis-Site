@@ -61,11 +61,11 @@ class Exhibit extends Page {
           priceList.append(html);
         }
 
-        // Put in Statement
-        var statement = $("<div id='exhibit_statement' class='exhibit_sectionHeader'>");
-        var statementText = $("<div class='exhibit_text'>");
-        statementText.html(this.data.get("Statement"));
-        statement.append(statementText);
+        // // Put in Statement
+        // var statement = $("<div id='exhibit_statement' class='exhibit_sectionHeader'>");
+        // var statementText = $("<div class='exhibit_text'>");
+        // statementText.html(this.data.get("Statement"));
+        // statement.append(statementText);
 
         // Put in Statement
         var bio = $("<div id='exhibit_bio'  class='exhibit_sectionHeader'>");
@@ -84,8 +84,8 @@ class Exhibit extends Page {
       $("#body").append(header);
       // $("#body").append(hours);
       $("#body").append(priceList);
-      $("#body").append(statement);
-      $("#body").append($('<div class="exhibit_priceListItemBorder"></div>'));
+      // $("#body").append(statement);
+      // $("#body").append($('<div class="exhibit_priceListItemBorder"></div>'));
       $("#body").append(bio);
       $("#body").append($('<div class="exhibit_priceListItemBorder"></div>'));
       $("#body").append(linksHeader);
