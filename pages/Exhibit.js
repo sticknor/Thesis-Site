@@ -20,27 +20,27 @@ class Exhibit extends Page {
 
         // Put in image header w/ alt text
         var header = $("<div id='exhibit_header'>");
-        var titleImage = $(`<img src='${this.data.get('Title Image')[0].url}' alt='${this.data.get('Title')}'/>`);
-        header.append(titleImage);
+        // var titleImage = $(`<img src='${this.data.get('Title Image')[0].url}' alt='${this.data.get('Title')}'/>`);
+        // header.append(titleImage);
         var headerImage = $(`<img src='${this.data.get('Header Image')[0].url}' />`);
         header.append(headerImage);
 
         // Put in "menu"
-        var menu = $("<div id='exhibit_menu'>");
-        var priceListLink=$("<div><a href='#pricelist'>Price List</a></div>");
-        var statementLink=$("<div><a href='#exhibit_statement'>Statement</a></div>");
-        var bioLink=$("<div><a href='#exhibit_bio'>Bio</a></div>");
-        var linksLink=$("<div><a href='#exhibit_links'>Links</a></div>");
+        // var menu = $("<div id='exhibit_menu'>");
+        // var priceListLink=$("<div><a href='#pricelist'>Price List</a></div>");
+        // var statementLink=$("<div><a href='#exhibit_statement'>Statement</a></div>");
+        // var bioLink=$("<div><a href='#exhibit_bio'>Bio</a></div>");
+        // var linksLink=$("<div><a href='#exhibit_links'>Links</a></div>");
 
-        menu.append(priceListLink);
-        menu.append(statementLink);
-        menu.append(bioLink);
-        menu.append(linksLink);
-        header.append(menu);
+        // menu.append(priceListLink);
+        // menu.append(statementLink);
+        // menu.append(bioLink);
+        // menu.append(linksLink);
+        // header.append(menu);
 
         // Put in Hours
-        var compiledInfoTemplate = Handlebars.getTemplate('hours');
-        var hours = compiledInfoTemplate(); 
+        // var compiledInfoTemplate = Handlebars.getTemplate('hours');
+        // var hours = compiledInfoTemplate(); 
 
         // Put in Price List
         var priceList = $("<div id='pricelist' class='exhibit_sectionHeader'></div>");
@@ -49,8 +49,8 @@ class Exhibit extends Page {
 
           var compiledTemplate = Handlebars.getTemplate('priceListItem');
           var html = compiledTemplate({ 
-            image : this.data.get("Work (from Price List)")[i].url,
-            title: this.data.get("Title (from Price List)")[i],
+            image : this.data.get("Work (from Price List)") ? this.data.get("Work (from Price List)")[i].url : '',
+            title: this.data.get("Title (from Price List)") ? this.data.get("Title (from Price List)")[i] : '',
             dimensions: `${this.data.get("Width (from Price List)")[i]}" x ${this.data.get("Height (from Price List)")[i]}"`,
             materials: this.data.get("Medium (from Price List)")[i],
             year: this.data.get("Year (from Price List)")[i].title,
@@ -62,10 +62,10 @@ class Exhibit extends Page {
         }
 
         // Put in Statement
-        var statement = $("<div id='exhibit_statement' class='exhibit_sectionHeader'>");
-        var statementText = $("<div class='exhibit_text'>");
-        statementText.html(this.data.get("Statement"));
-        statement.append(statementText);
+        // var statement = $("<div id='exhibit_statement' class='exhibit_sectionHeader'>");
+        // var statementText = $("<div class='exhibit_text'>");
+        // statementText.html(this.data.get("Statement"));
+        // statement.append(statementText);
 
         // Put in Statement
         var bio = $("<div id='exhibit_bio'  class='exhibit_sectionHeader'>");
