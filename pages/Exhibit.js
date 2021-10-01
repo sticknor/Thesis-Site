@@ -82,7 +82,7 @@ class Exhibit extends Page {
       // $("#body").style("scroll-behavior", "smooth");
       $("#body").addClass("exhibit_page");
       $("#body").append(header);
-      $("#body").append(hours);
+      // $("#body").append(hours);
       $("#body").append(priceList);
       $("#body").append(statement);
       $("#body").append($('<div class="exhibit_priceListItemBorder"></div>'));
