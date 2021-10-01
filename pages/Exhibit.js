@@ -62,10 +62,10 @@ class Exhibit extends Page {
         }
 
         // Put in Statement
-        // var statement = $("<div id='exhibit_statement' class='exhibit_sectionHeader'>");
-        // var statementText = $("<div class='exhibit_text'>");
-        // statementText.html(this.data.get("Statement"));
-        // statement.append(statementText);
+        var statement = $("<div id='exhibit_statement' class='exhibit_sectionHeader'>");
+        var statementText = $("<div class='exhibit_text'>");
+        statementText.html(this.data.get("Statement"));
+        statement.append(statementText);
 
         // Put in Statement
         var bio = $("<div id='exhibit_bio'  class='exhibit_sectionHeader'>");
