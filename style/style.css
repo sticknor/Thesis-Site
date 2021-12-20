@@ -571,3 +571,9 @@ html {
 #pricelist {
   padding-top: 55px;;
 }
+
+@media screen and (max-width: 700px) {
+  .gridItem {
+    width: 100% !important;
+  }
+}
