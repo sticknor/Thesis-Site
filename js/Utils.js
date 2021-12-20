@@ -17,3 +17,7 @@ function makeDetailsLine(details) {
 	return detailsLine.substring(0, detailsLine.length-spacer.length);
 }
 
+function firstOr(array, fallback) {
+  if (array === undefined || array.length < 1) { return fallback; }
+  else { return array[0]; }
+}
