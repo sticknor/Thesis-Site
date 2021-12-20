@@ -160,7 +160,7 @@ body{
 	position: sticky;
   flex-direction: column;
 	/* width of menu */
-	max-width: 300px;
+	width: 300px;
 	margin: 30px;
 	justify-content: flex-start;
 	align-items: center;
@@ -263,7 +263,7 @@ body{
 #menu {
 	padding: 30px;
   background: white;
-  max-width: 300px;
+  width: 300px;
 }
 
 .bioLink {
@@ -383,6 +383,8 @@ body{
 
   #menu {
     margin: auto;
+    width: initial;
+    max-width: 300px;
   }
 
   #page {
