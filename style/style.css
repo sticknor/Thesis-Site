@@ -192,6 +192,7 @@ body{
   object-fit: contain;
   margin-bottom: 15px;
   width: 100%;
+  max-height: 90vh;
 }
 
 .gridItem .imageTitle {
