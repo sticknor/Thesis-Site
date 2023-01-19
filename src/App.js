@@ -38,8 +38,6 @@ export default function App() {
     apiKey: 'keyCVfnd8GGLw029l', // a read-only key
   });
   const base = Airtable.base('appf9UorVjkfwZqAo');
-  // const [base, setBase] = useState(_base);
-  // console.log(base);
 
   useEffect(() => {
     base('About')
