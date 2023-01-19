@@ -1,9 +1,7 @@
 // React
 import React from 'react';
-import PropTypes from 'prop-types';
 
-function Home(props) {
-    const { splashImages } = props;
+function Home({ splashImages }) {
     return (
         <div
             id="splashContainer"
@@ -11,10 +9,6 @@ function Home(props) {
         >
         </div >
     );
-}
-
-Home.propTypes = {
-    splashImages: PropTypes.array
 }
 
 export default Home;
