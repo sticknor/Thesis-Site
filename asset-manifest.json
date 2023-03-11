@@ -1,10 +1,10 @@
 {
-  "main.css": "/Thesis-Site/static/css/main.8aa5ed8c.chunk.css",
-  "main.js": "/Thesis-Site/static/js/main.43c0c510.chunk.js",
-  "runtime~main.js": "/Thesis-Site/static/js/runtime~main.cf51307c.js",
-  "static/js/2.ee27235a.chunk.js": "/Thesis-Site/static/js/2.ee27235a.chunk.js",
-  "static/js/3.3b0f191d.chunk.js": "/Thesis-Site/static/js/3.3b0f191d.chunk.js",
-  "index.html": "/Thesis-Site/index.html",
-  "precache-manifest.1ca87125c70d8b9fe31bf8a2eae71aca.js": "/Thesis-Site/precache-manifest.1ca87125c70d8b9fe31bf8a2eae71aca.js",
-  "service-worker.js": "/Thesis-Site/service-worker.js"
+  "main.css": "/static/css/main.8aa5ed8c.chunk.css",
+  "main.js": "/static/js/main.43c0c510.chunk.js",
+  "runtime~main.js": "/static/js/runtime~main.afbdf9f3.js",
+  "static/js/2.e7d5638d.chunk.js": "/static/js/2.e7d5638d.chunk.js",
+  "static/js/3.3b0f191d.chunk.js": "/static/js/3.3b0f191d.chunk.js",
+  "index.html": "/index.html",
+  "precache-manifest.8efc92bc6b7a28062d17c087b994196e.js": "/precache-manifest.8efc92bc6b7a28062d17c087b994196e.js",
+  "service-worker.js": "/service-worker.js"
 }
